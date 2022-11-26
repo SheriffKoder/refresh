@@ -2,6 +2,8 @@
 /*
 Positioning Center 
 
+
+>Center
 Margin: 0 auto;
 element will take the width specified, then the remaining space
 > split evenly between the two margins,
@@ -9,13 +11,15 @@ horizontally center that element within its container
 /* for a flex item it absorbs all the remaining space to this margin direction
 /* centers a div if its a flex item
 
+
+> Right remaining
 margin-right: auto;
 /* for a flex item it absorbs all the remaining space to this margin direction
 
 
-Layouts:
+>Layouts
 #1 float:left // #2 margin: #1 width , max-width
-#1 width 25% // #2 width 75%
+#1 width 25% // #2 width 75% (inline natural alignment)
 #1 width    // #2 flex: 1
 #1 Fixed (f:initial w width)) || #2 flexible (flex:1) || #3 Fixed (f:initial w width)
 
@@ -24,6 +28,8 @@ left 50%, margin-left: -XXpx (Center)
 
 
 align-self:center;
+
+
 
 Methods:
 (flex parent) justify-content
