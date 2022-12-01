@@ -66,11 +66,17 @@
     }
     
     */
+
+
+
     }
     
     
     ///// Javascript
     
+    //use '' when inside in html events when outer is " "
+
+
     label:loop , break label; //apply on parent loop
     continue;(next loop) break; //out of current loop
     
@@ -89,6 +95,9 @@
     OR chain , first true or last false
     AND chain, first false or last true
     
+    if typeof ===
+
+    //what are your true statements then all will be else
     
     
     /*////////////////////////////////////////////////////////////////////*/
@@ -137,7 +146,8 @@
     //fun(new_func) { newFunc(2)    //pass function to function
     //let newFunc = functionName (Declaration or expression)
     
-    
+    ?? > const foo = if_null_or_undefined ?? "return_this"
+
     
     
     //divisible i%3 === 0
@@ -152,16 +162,20 @@
     
     //FOREACH with ARROW function
     fruits.forEach( fruit => expression); (myFunction);
-    
+    //forEach with eventListeners
     
     //ARGS
     - function (...args)  {
             args.forEach(arg) //array of undefined n arguments
             
             //arguments without ... have to be converted to x= Array.from(arguments)
-    }
+            //if (args.includes(item) array.push(item)
+        }
     
-    
+    //multi method usage
+    Return string.split("").reverse().join(""); 
+    //->array // -> array method //-> output string
+
     
       
     
@@ -185,6 +199,8 @@
     
     - array matrix =[ [,,][,,][,,]  ];
     - arrays can hold function, obj-ref, 
+
+    array.sort();
     
     
     }
@@ -212,17 +228,24 @@
     .setTimeout(fn, ms, argument_optional)
     let x = elem.setInterval(fn, ms); clearInterval(x);
     
-    .addEventListener("click", fn);
-    
+    ////Events
+    .addEventListener("click", fn, optionalArgument); //can use more events than in html or .onEvent
+    .addEventListener(click, fn, {once:true}); //click only once
+
     window.onload = fn;
     function fn (para) {
         para.target.setAttribute();
     }
     
     window.onresize = function () {};
+
+    e.keyCode == "65";
+    if (e.key == "v" && e.ctrlKey)
+    e.propertyName
     
     
     
+    //conversion 
     number > number
     number > string(converted)
     string (converted) > string (converted)
@@ -247,7 +270,7 @@
     
     
     .concat()
-    .repeat()
+    .repeat(n)
     .trim()
     .charAt(n)
     .padStart()
@@ -273,6 +296,9 @@
     //////// number methods 
     Math.trunc(x) //removes the characters or floats from a number
     
+    //Number(x.toFixed(1)); .123 => .1 
+    //Math.round( x * 10) / 10
+
     
     //////// Window events
     {
@@ -294,30 +320,42 @@
     {
     
     - events, track of clicks, page scroll, touch quantity, 
-    
+    - e.preventDefault();   //prevent default behavior, ex link not open but does another thing
+
+
     x = target.clientX; .clientY; //px position map.onclick = fn();
     - screenX user's screen, pageX browser's screen
+    //  pageX //mouseclick to draw
+
     
     x = new Date().toString, getfullyear, getDay //Date sub-methods
-    .ondragStart/.ondragEnd
+    .ondragStart/.ondragEnd //in string.js
     .onDrop, onDragOver .onDrag .onLeave onDragEnter
     .onPlay
     
+    .invalid (with html required)
+    .valid
+    .input
+    .change
+
     .onmouseover
     .onfocusout/onblur
     .onfocusin
-    .keydown (para.key)
+    .keydown (para.key) //ms hold repeat
     .onkeyup
-    .onkeypress
+    .onkeypress //not work with alt, cmd etc
     .onclick
     .contextmenu    //rightclick
-    .oncopy/oncut/dbclick
+    .oncopy/oncut
+    .dblclick
     
     
     .animationstart
     .animationend
     .animationiteration
     myDiv.style.animation 
+
+    .transitionend  //end of css transition
     
     
     }
@@ -337,7 +375,36 @@
     .ondurationchange
     .onended
     
-    
+    .onload
+    .onloaddata(video frame)
+    .onloadmetadata (audio/video info)
+    .onloadstart (start looking for the file)
+
+
+
     }
     
     
+
+    ///////DOM Methods
+
+    .querySelectorAll("div[attribute=data-name"); //where data-Name, name is a custom attribute 
+    //multi attribute, different numbers
+
+
+    .parentNode
+    .nodeName/type/value
+    .childNodes
+    .firstChild
+    .lastChild
+
+    .nextSibling, 
+    .previousSibling
+
+    .hasChildNodes(x); 
+    .removeChild();
+
+
+
+
+
