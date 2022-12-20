@@ -74,6 +74,11 @@
     
     ///// Javascript
     
+
+
+
+
+
     //use '' when inside in html events when outer is " "
 
     //Objects
@@ -86,6 +91,8 @@
     Let obj = { [promptfruit]: 4 };	alert(obj.apple);
     For (let x in obj)
     Obj in obj
+
+    let x = object.toString();
 
     //Object constructors
     function Toy (sound) {
@@ -102,6 +109,45 @@
 
 
     
+    Function family (father1, mother1) {
+        This.father = father1;
+    }
+
+    Let mark = new person(green, 38); //mark instance of person
+    Let family1 = new family (mark, Anna);
+    Family1.father.eyecolor;
+    
+    Pass objects to constructors (type of object)
+    this.make = parameter.makeyear;
+    
+    Fido instance of dog // true
+    spot.hasOwnProperty("protovalue"); //false
+    spot.hasOwnProperty("directvalue"); //true
+    
+
+    DogConstructor.prototype.bark = fn ();
+    Fido.bark(); //direct access or extended access
+    //prototypes are invoked when called not stored in memory
+    Keep prototypes to methods
+    Methods check on this.value and change it
+    
+
+    ShowDog.prototype.constructor = ShowDog; //set creator
+    
+    ShowDog.prototype = new Dog();   //or aDog;
+    For the new showDog to inherit from Dog's properties also
+    Predefined, for ready methods/text
+        
+
+
+
+
+
+
+
+
+
+
 
 
     label:loop , break label; //apply on parent loop
@@ -232,7 +278,9 @@
     array_name.filter(function_returns _true_cases) applies to each item if true is returned
     
     object/array.toString()
-    
+    Array.reverse();
+    Array.join("-"); //outputs in a string form
+
     
     array.slice(3,4); //output new array from start,end+1
     array.splice(2,0, str, str);	//placement position without holes, how many from exist remove = 0, inputs
@@ -310,6 +358,8 @@
     //styles
     div2611.style.color = "blue";
     div2611.style.cssText = "color: blue;   background: white;" ;  //add several styles
+    `--dark-color:${randomfn()};`
+
     div2611.setAttribute("style", "color: blue;   background: white;");
 
     //div2611.style.backgroundColor //to access b-c use camelCase and remove -
@@ -359,10 +409,15 @@
     
     //////// string methods 
     {
+    let newString = "";
+    newString += array[i);
+    string.replace(/[^a-z]/g, "");
+    processedString.split("").reverse().join("");
+        
     Number()
     toString()
     booleean(a)
-    .slice()
+    .slice() //selected elements in an array, as a new array.
     .substring()
     .split()
     .sortLocaleCompare()
@@ -375,7 +430,7 @@
     .charAt(n)
     .padStart()
     
-    .match(/ini/g)
+    .match(/ini/g)  //returns matched in an array
     .includes()
     .endsWith()
     .indexOf() //.lastindexOf();
@@ -445,11 +500,18 @@
     events, track of clicks, page scroll, touch quantity
     e.preventDefault();   //prevent default behavior, ex link not open but does another thing
 
+    .ontoggle 	//works with >details/summary tags
+    .touchcancel    //when touch is interrupted
+    
+
+
+
+
     //position and placing
     x = target.clientX; .clientY; //px position map.onclick = fn();
     - screenX users screen, pageX browsers screen
     //  pageX //mouseclick to draw
-    E.offsetX/Y //position from the element itself
+    e.offsetX/Y //position from the element itself
     //Rgb values based on offsetX
     .offsetWidth //size/position of an element, read only
     .offsetLeft //ret left position relative to parent
@@ -458,12 +520,41 @@
     .clientHeight/Width //size/position of a child in element with padding but ignores borders
     rect = x.getBoundingClientRect();	  //return elements position on screen
     rect.top/bottom/right/left.toFixed();
-    window.scrollBy(100,100);   //force scroll
     window.pageXOffset, window.pageYOffset //add pointer position
+
+    let w = window.outerWidth; //rightaway
+    //get the size of an element use client/inner/outer/offset height/width properties
+    //onresize works on window only
+    
+
+    //scrolling
+    .scrollTop/ scrollLeft //property gives number of pixels scrolled , read/write
+    .scrollWidth //read only, compared against  offsetWidth to determine if overflow happened
+    div.scrollTo(x,y,behavior);
+    window.scrollBy(100,100);   //force scroll, can be on an overflown scroll item like p
+
+
+
+    //divTest.style.csstext = ["overflow: scroll;"];
+    //divTest.onScroll = fn;
+
+
+
+
+
+
+
+
 
 
     
     x = new Date().toString, getfullyear, getDay //Date sub-methods
+    New Date().toString();
+    New Date("your date as text");
+    
+
+
+
     .ondragStart/.ondragEnd //in string.js
     .onDrop, onDragOver .onDrag .onLeave onDragEnter
     .onPlay
@@ -497,6 +588,8 @@
     .ontouchstart	
     .ontouchmove	
     .ontouchend	
+    .touchcancel    //when touch is interrupted
+
 
     e.touches.length
     let {pageX, pageY} = e.touches[i];
@@ -512,6 +605,14 @@
 
     //hmtl Form/input-submit, 
     form on submit, e.preventDefault(); //avoid refreshing
+    .ontoggle 	//works with >details/summary tags
+    //form like a div with inputs text/reset on it
+    //input type reset, form .onreset
+
+    //<input type="search" id="searchInput" onsearch="searchFunction()">
+    //searchPoutputID.innerHTML = searchinputID.value;
+
+    //textID.onselect = fn;
 
     
     
@@ -539,7 +640,22 @@
 
     audio.currentTime =0; //end
 
-
+    .onplay
+    .onpause
+    .onplaying //media is playing after being paused or stopped
+    .onprogress //when downloading i.e buffering
+    .onratechange //when playback speed changes
+    
+    videoID.playbackRate = 0.3;
+    .onseeking     //started change time scroll
+    .onseeked   //finished change time scroll
+    vidID.currentTime   //a value, either get or set time for a video
+    .onstalled  //when media data is not available
+    .onsuspend //when loading of media is prevented/suspended intentionally
+    .ontimeupdate //when time scroll changes for any reason, can be used with current time to display time
+    .volumechange
+    .waiting        //media needs to buffer
+    
 
     }
     
