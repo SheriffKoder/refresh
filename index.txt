@@ -1,0 +1,102 @@
+index
+
+**********************************************************************
+******************************Odin3.css*******************************
+**********************************************************************
+>>Forms
+New
+SVG
+CSS Units
+Colors
+Fonts
+Shadows
+Borders
+overflow using overflow, text-overflow, overflow-wrap, 
+                word-break, white-space, hyphens
+Pods elements
+Valid style (ex)
+Target selector style (ex)
+figcaption (ex)
+Positioning
+Min/max
+variables
+preprocessors and precompiles
+Form styling
+custom checkbox (ex)
+custom pen path (ex)
+customSlider (ex)
+input validation styling (ex)
+animatedCheckBall (ex)
+InternetIsHard Form (ex)
+gradient select css (ex)
+gradient select/options button (ex)
+slio label/help animation (ex)
+
+
+**********************************************************************
+******************************Odin3.html*******************************
+**********************************************************************
+>>Forms
+
+Html tags
+Semantic HTML Tags
+> and opens info (ex)
+Progress bar (ex)
+Svg
+Emmet
+Tables
+Takeouts 
+Input validation (ex)
+Fig caption overlay (ex)
+sticky (ex)
+Links style/scroll to the :target (ex)
+file upload (tag)
+
+Forms:
+-requests
+-input types
+-input attributes
+-input tags
+-form examples
+
+**********************************************************************
+******************************Odin3.js*******************************
+**********************************************************************
+
+= backend
+= frameworks
+= http requests
+= scroll events
+= theme toggle (ex)
+= show range input slider value (ex)
+= toggle billing (ex)
+= check validity (form) (ex)
+= show hide div below input (ex)
+= submit a form without leaving a page (ex)
+= add invalid style on submit (ex)
+
+
+
+
+**********************************************************************
+******************************Odin4.css*******************************
+**********************************************************************
+
+Grid
+
+
+
+
+**********************************************************************
+******************************Odin4.html*******************************
+**********************************************************************
+html semantic tags
+
+
+
+**********************************************************************
+******************************Odin4.js*******************************
+**********************************************************************
+
+js writing styles
+Linters and prettier

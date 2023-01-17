@@ -82,6 +82,8 @@
     //use '' when inside in html events when outer is " "
 
     //Objects
+    //everything in js is an object
+
     person[myDataName] = myDataValue;
     Obj.["two letter"]
     Obj.[name+ "extension"]
@@ -139,8 +141,24 @@
     Predefined, for ready methods/text
         
 
+    function ShowDog2 (name, breed, weight, handler) {
+ 
+        Dog.call(this, name, breed, weight);    
+        //call reuse these parameters here to be processed
+        //invokes Dog, passes it to use as this, 
+        //pass ShowDog2 parameters to the Dog parameters
+        this.handler = handler;
+   }
 
+    //create custom methods
+    //this is "fido"
+    fido.toString = function () {
+        return this.name + " Dog Weight " + this.weight;
+    }
+    Element.function	//function this is element
 
+    console.log(fido.protoVar); //proto taken from Dog, but fido not have property yet
+    console.log(fido.prototype); //undefined
 
 
 
@@ -250,7 +268,7 @@
     
     }
     
-    //FOREACH with ARROW function
+    //FOREACH with ARROW function (arrays) (Array.from(Div.elements).forEach (i => {i}))
     fruits.forEach( fruit => expression); (myFunction);
     //forEach with eventListeners
     
@@ -299,8 +317,8 @@
 
     array.findIndex(fn); //fn returns true on p se value //where
     array.find(fn); //fn returns true on p se value //returns 1st item found
-    array.every(fn); //fn returns true on p matches cond. //all items match cond
-    Array.some(fn); //fn returns true on p matches cond //at least one item 
+    array.every(fn); //fn returns a single true running on all items if p matches cond. //all items match cond
+    Array.some(fn); //fn returns a single true on p matches cond //at least one item 
 
     array.sort(fn) //fn passes over array and takes two paras, returns 1/-1 if greater/smaller
 
@@ -393,8 +411,7 @@
     e.propertyName
     consol.log(e.altKey) //output true if event+altpressed
 
-    
-    
+
     //conversion 
     number > number
     number > string(converted)
@@ -431,12 +448,12 @@
     .padStart()
     
     .match(/ini/g)  //returns matched in an array
-    .includes()
+    .includes() //for arrays, if its found return true, (value,starting position)
     .endsWith()
-    .indexOf() //.lastindexOf();
+    .indexOf() //.lastindexOf();    (value,startingposition)
     itemName.indexOf(text) != -1  //indexOf return
 
-    .search()
+    .search()   //returns first match index, -1 if not found
     
     .replace(), .replaceAll()
     .repeat()
@@ -532,12 +549,31 @@
     .scrollWidth //read only, compared against  offsetWidth to determine if overflow happened
     div.scrollTo(x,y,behavior);
     window.scrollBy(100,100);   //force scroll, can be on an overflown scroll item like p
+    para.scroll(100, 0);
+    .scrollWidth
+    .offsetWidth
+    
+    element.scrollTo({
+        top: 100,
+        left: 100,
+        behavior: 'smooth'/'instant'
+      });
+      
 
 
-
-    //divTest.style.csstext = ["overflow: scroll;"];
+    //divTest.style.cssText = "overflow: scroll;";
     //divTest.onScroll = fn;
 
+    // get variable from inline style
+    element.style.getPropertyValue("--my-var");
+
+    // get variable from wherever
+    getComputedStyle(element).getPropertyValue("--my-var");
+
+    // set variable on inline style
+    element.style.setProperty("--my-var", jsVar + 4);
+
+        
 
 
 
@@ -574,6 +610,8 @@
     .contextmenu    //rightclick
     .oncopy/oncut/onpaste
     .dblclick
+    HTMLBodyElement.ongamepaddisconnected
+    .wheel          // mouse wheel roll 
 
 
 
@@ -662,6 +700,7 @@
     
 
     ///////DOM Methods
+    
 
     .querySelectorAll("div[attribute=data-name"); //where data-Name, name is a custom attribute 
     //multi attribute, different numbers
@@ -705,3 +744,42 @@
     .children //only elements
     item.firstChild.textContent
 
+
+
+    ////Forms
+    . DOMContentLoaded
+    div.hidden = true/false;
+    e.target.checked
+    //Get attribute type password to text to show password
+    e.preventDefault(); //avoid going to another page on submit
+
+    //JSValidation for form button,fieldset,input,output,select,textarea
+    .validationMessage //returns message describing validation concerns
+    .validity  //returns a validityState //has many states to check online*
+    .valid //returns true if element meets all its validation
+    .valueMissing  //true if required attribute but no value
+    .willValidate //true if element will be validated when form is submitted
+
+
+    .checkValidity(); //checks whether any inputs are subject to constraint validation.
+    .reportValidity();  //reports invalid fields using events useful with preventDefault() in an onSubmit event handler
+    .setCustomValidity('message');  //element is invalid if set this message and the specified error is displayed
+    .myform.noValidate = true; //disable default validation and error messages and validate function on submit event
+    
+
+
+
+
+
+    ///////DOM Properties
+
+    .wheel          // mouse wheel roll 
+    .altKey, returns whether the ALT key was pressed
+    .animationName, return animation name
+    .bubbles,  bubbling event ?
+    .button,    which mouse button pressed when mouse event triggered
+    .buttons,    which mouse buttons pressed when mouse event triggered
+    .cancelable,    event can have its default action prevented?
+    .charCode,  returns unicode character code of the key tiggered the event
+    .changeTouches, returns all touch objects state changed between previous touch and this touch
+    

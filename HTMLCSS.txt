@@ -1,0 +1,492 @@
+HTML:
+attr pattern=[a-z]{3}
+Head : <base> //specify root directory for all links
+Head: <link> //apple touch icons, media query, rel=alternate/hreflang="de"/
+Head: <style media ="">
+
+Body:
+<div>
+<header> <footer> //for doc or articles
+<nav> for links
+<main> //dominant content
+
+<article>
+<address> //contact
+<figure> /  img + <figcaption>
+<p> <time> 
+<section> //standalone section of a document, put header
+<aside> //unrelated like ads
+
+can access an id element by adding #id to page's url
+or just the id in the href
+:target //receive mouse click or touch /when a link=#p1 and p has id=p1
+parent:target-within //Selects a parent when one of its descendants is a target
+
+
+<details ontoggle=""><summary><p> // > summary open p
+<figure><img><figcaption>	//image caption
+<label></><progress/meter id="" value="" min="" max=""> </
+<Label for="name"> </><input id="name>
+<input><span:before>
+<a href=#idname> <p id="idname">	//link scroll to p use p:target
+<input type=file accept="image/png, image/jpeg">
+<p contenteditable>This paragraph is editable; it is read-write.</p>
+svg image code to alter with css
+
+
+text
+<pre> exact as written, <bdi> isolate direction, <bdo> overrides current directionality
+
+
+/*////////////////////////////////////////////////////////////////////*/
+
+<table> 
+<caption> head
+<colcroup> <col/> <col> </colgroup> head
+thead, tbody, tfoot tags // parent to order rows
+colspan dd atr for size
+Scope // id/td attires for acc linking
+
+/*////////////////////////////////////////////////////////////////////*/
+
+
+.(inputs) name; what this input represents, reference for the backend**
+.(selection) value, sent to server** only when checked
+
+<li> Lists and fieldsets/labels are recommended for structuring multiple checkboxes or radio buttons.
+  H1>H2, and sectioning to structure complex forms
+
+
+//input attributes
+  .type
+  .title, output a validation message beside the custom validation box
+  .placeholder, better use a text below the input
+  .required, prevent the submission of empty/unvalid fields
+  .name; what this input represents, reference for the backend**
+  if not declared, it will be ignored on submit
+  .value is how its viewed, true/false in check boxes
+  .checked  //for radio
+  .step //for number type, how much the spinner increases, can be decimal step=0.01
+  .min/max for number
+  .novalidate   //for form to turn off automatic validation for custom validation
+  .autocomplete //browsers to identify the data type solely name/id/type,  autocomplete="off" allow password managers to do their job
+        also using id="name", browsers will autofill names
+
+  .autofocus    //choice options only one item can have it
+  .form         //associate a form control with a form it is outside of even if in different form element
+  .multiple //used on email, file etc, separated by comma
+
+  aria-label/aria-labelledby attributes can be used to define a string that labels the interactive accessible element on which it is set. 
+  used if the tag has no appropriate text visible in the DOM that could be referenced as a label content like svg or *
+  accessible names button>its html, form>its labels image>its alt attr
+  if aria declared it will take precedence over them
+  aria-describedby or aria-description, to describe text, explain validation rule ="password-minlength"
+  .aria-live  //on a span following input to make sure custom error message will be presented to everyone and read out to screen reader
+  aria-live="polite", to notify passwords is shown/hidden
+  .aria-expanded, aria-controls
+
+
+.(file) accept="image/*";  ="image/jpg"; accept="image/*;capture=camera/camcorder/microphone"*/
+readonly //useful when checking on shipping details when confirming on a checkout
+  disabled
+  size      //physical size of box
+  maxlength/minlength //max/min number of characters validation
+  spellcheck
+  pattern=""
+  inputmode, useful when want to change the on-screen keyboard type but not the input's behavior and validation rules on ios android
+
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
+
+  <!--blank action: submit to same url, method:get , inspect contents of the form -->
+  Submitting to self creates in the browser url
+speaker-submission.html?full-name=Rick&email=rick%40internetingishard.com&talk-type=workshop&t-shirt=l&abstract=Derp.&available=is-available
+Everything after the ? represents the variables in our form
+each variable is separated by an & character
+Data can be manipulated this way
+
+  <form action="/my-handling-form-page" method="post">
+
+    <fieldset>  //grouping whats in between in a bordered box
+        <legend>  caption to fieldset
+
+
+        <label for="inputID"> <span>Name:</span> <span aria-label="required">*</span> </label> //nesting more than one label in a label
+        ////input types : will validate that the user has entered a correctly formatted email address
+        .text; default, first and last names, single line browser removes breaks before sending to server
+        .email; will provide @symbol on mobile devices to make entering and email easier
+        built-in client-side error validation, performed by the browser before the data gets sent to the server.
+        .password
+        .number; will accept numbers only and ignore any other value, numeric keyboard on phones
+        .date .month .time . week //min/max/step
+        .radio, the name attribute group radio inputs for a 1-selection //group into a fieldset, use labels
+        .checkbox //Can wrap checkbox in a label tag
+        .hidden, not shown to user/not spoken it needs a name and a value (can be changed with js, an example is giving a time to the order)
+        .search //browser text saving mechanism
+        .url //http/https validation
+        .tel  //phones display keyboard, used inst of number if not want spinner, or text with inputmode=numeric
+        .image, behaves as a button, given alt, src, height/width - the clicked coordinates are what sent as pos.x, pos.y
+        .file //accept and multiple attribute
+        .range  //number slider with min/max/step/value(initial)
+        .color  //return hex
+        .button //no custom html content
+        .output //a text result of a calculation or user action
+
+        ////button types
+        .submit //default button type
+        .reset  //clears form
+        .button //generic for js interactions
+
+<header> <h1> <p>
+<form>
+    <section>
+        <h2>
+        <fieldset>
+            <legend>
+            <ul>
+                <section>
+                    <li> 
+                        <label> <span>
+                        <input>
+            
+
+
+<datalist>
+    <option list="datalist-id"> <input></>
+    can wrap options in label>select for older browsers
+
+<textarea> not an input type but can accept text that
+    attr: cols,rows, wrap(soft-default/hard/off)
+    (css)resize: both(default), horizontal, vertical, none, block, inline(directions)
+    can put html, css and js
+
+<select>
+    <optgroup label="">          //on dropdown grouping
+      <option value=""> <option value=""> <option value="">
+    </optgroup>
+</select>
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
+
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
+
+CSS:
+box-sizing: border-box;
+Hr is a 1px inset border block with margin start auto
+Align-self: stitch
+-webkit-user-select: none;
+-webkit-user-modify: read-only !important; 
+pointer-events: none;
+-webkit-text-security: disc !important;
+:link :visited //visited and not 
+From psedo elements
+<p contenteditable > //read/write
+:target 		//when a link=#p1 and p has id=p1
+Plate * {
+Font/width % is from parent's font/width
+Height: calc(100vw * (9/16)); //aspect ratio
+Background-portion: right 50px; //50px from top
+Width: calc(30%, 100px);	//can use both together
+font: calc(16px+1vw) //grow 1px with every 100px of vw
+letter-spacing: -0.15em;	//-ve values
+Border-style: clockwise x y z w;  //double
+Border-radius: clockwise x y z w;  use / in between for shapes
+outline: max(2px, 0.15em) solid currentColor;
+outline-offset: max(2px, 0.15em);
+box-shadow: x y blur spead;	//inwards // comma layers
+Overflow-x: overlay; //scrollbar not take space (h or wspace)
+Text-overflow: ellipsis, fade(0.5) //... use whitespace and overflow
+Overflow-wrap (words): normal / anywhere/break-word
+Word-break: normal / breakword/keep-all/break-all
+White-space: normal/nowrap/pre/pre-wrap/pre-line/break-spaces (behavior)
+Hyphens: auto; //words breaks with "--"
+direction: rtf;
+opacity: showback , transparency: the element visibility
+Article h2 , h2 ~ p	//not directly descendant
+Article > h2, h2 + p //direct descendant
+Div.row *	//all elements children of a row div
+
+Positions
+Staric //default
+Relative //overlaps, positioned to its Dom position
+Absolute //free positioning to a relative/abs parent or the body
+Fixed //positioned to the document only except parent has transform etc.
+Sticky //stays in place until its 0 position scrolled
+
+Will-change //element expected to change (odin3.css)
+
+calc();
+min(1rem, 50%, 10vw)
+max(x,y,z);
+Clamp(min, default,max);
+
+--color-name: red; //inherited by children
+var(--color1, optionalfallbackvalue)
+:root.dark { , :root.solid { //root given class
+@media (prefers-color-scheme: dark) {
+
+appearance .none //removes the default css so can style
+vertical-align: -2px/top; //position to baseline up and down
+color: currentColor;
+clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+cursor: not-allowed;
+ul > list-style: none;
+
+::marker    //for Li
+input::file-selector=button
+::placeholder   //input writing text
+::selection //highlight
+::first-letter ::first-line
+::backdrop //fullscreen background
+::cure //captions
+::before, ::after
+Content: attr(href) ")";
+
+P:hover:visited (chain)
+:hover
+:picture-in-picture
+:playing :paused
+:autofill
+:place-holder-shown
+:read-only
+:read-only  //read only elements like submit, p etc.
+:default //radios/checkboxes checked by default i.e attr checked
+:indeterminate //radios/checkboxesjsindeterminate/progress.novalue neither checked/unchecked :checked
+:target //receive mouse click or touch /when a link=#p1 and p has id=p1
+parent:target-within //Selects a parent when one of its descendants is a target
+:div:focus-within //parent or its child recieves focus
+:focus-visible //when tab-key not mouse or touch
+:scope
+:valid / :invalid / :user-invalid
+:user-invalid //only when the element loses focus and its invalid
+:in-range / :out-of-range
+:required, input/select/textarea 
+:optional (default) 
+:dir(rtl)
+:lang(en-US)
+
+:root //I i.e html with igher specificity
+:empty
+
+:focus //clicked or tab, :focus-visible parent:focus-within
+:is(:valid, input) is like where(0 but higher specificity
+4x2 combinations to get any 1/1 true
+:not(selector)
+
+:link (unvisited) // :visited //:hover //:active when clicked //:focus
+
+:enabled //default :disabled by attribute
+
+//adding icons
+Input:valid + span::before { content :"x"
+P:target::before { content :">"
+✓ ✖ ► ▼⚠️ ✅❌
+
+
+[attribute]
+selector[attribute] //just if an attribute exists
+[attribute="value"][attribute="value"] //chain
+
+attributes with .jpg for example
+img[src$=".jpg"i] //looks from end for .jpg, case insenstive and s for case senstive
+^= //match from start
+$= //match from end
+*= //match from start or end, at least one occurance
+
+~= //white space separated text and has value
+|= //value or value- en-US and begins with the stated value
+writing-mode: vertical-lr;
+accent-color: red;
+color applied to checkbox, radio, range, progress tag
+Visibility:hidden/visible
+flex-flow: row wrap; //100% width different lines, 0% same line
+input:required + span::after {
+
+Attribute Selectors 	(0,0,1,0) 		p[href]
+Pseudo-elements 	(0,0,0,1)		>,+,~,::
+
+Lnth-child(n+3) // (odd)
+:nth-last-child(n)
+:first-child, :last-child, :only-child //element itself
+:nth-of-type(even)  :last-of-type :only-child :only-fo-type//element
+
+out of min/max > :invalid/:out-of-range :in-range
+:read-only
+:read-write
+
+animation: 0.4s linear infinite alternate border-pulse;
+@keyframes border-pulse { from {} to {}
+
+//form input css availability
+https://developer.mozilla.org/en-US/docs/Learn/Forms/Property_compatibility_table_for_form_controls
+
+
+
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+
+/**Grid**/
+two dimentional layout-first specific width/height opposed to flex
+
+
+.grid_container {
+  display: grid(block) or inline-grid
+
+  grid-template-rows: [line1-name] 100px [line2-name] 100px [line2-name] 100px;
+  grid-template-columns: repeat(3, 1fr);
+
+  grid-template: rows/columns;
+  grid-auto-flow: column; //change adding to columns instead of rows
+                          //allow placed buttons to be put at end of column
+
+  grid-auto-rows or columns: for new added items
+
+
+
+  row-gap: / column-gap: / gap: row/column;
+
+
+
+}
+
+//also
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); (responsive)
+repeat, auto-fit: expand, min 200px, fr and is (stretched)
+>auto fill, on expand adds empty columns
+>auto fit, on expand expands the existing columns
+
+with
+grid-template-columns: 1fr; (1column multiple lines)
+
+
+
+
+
+measurements
+fr, %, min(x,y), max(x,y), minmax(x,y), repeat(n,x),
+clamp (min, ideal, max); will be ideal until less than min will use min, and max
+px, rem,
+min-content: minimum size of the content
+max-content: maximum size of the content
+auto: like fr but less reliable
+fit-content: use the space available
+auto-fill(for row), auto-fit(for column)
+
+
+
+
+/* item placing 1 */
+.grid_item {
+
+
+  grid-column-start: n;
+  gird-row-start: n;
+  grid-column: start / end;
+  grid-row: 1 / 3;
+  grid-row: line2-name 2; //second defined name space from container
+
+  /* row-start / column-start / row-end / column-end */
+  grid-area: 1 / 1 / 2 / span 2;
+
+  
+  can use block-start/end(rows), inline-start(column)
+  can count backwards -1 for last, can skip 2nd N to stretch, 
+  span 3 > take 3 cells after defined N
+
+
+  /*can make a child also a grid
+  and use the track definition of the parent grid. */
+  display: grid;
+  grid-template-columns: subgrid;
+
+  z-index: 2;
+
+}
+
+
+
+
+/* item placing 2 */
+grid_container2 {
+
+  ...
+  ...
+  grid-template-areas: 
+    "header header header header"
+    "main main . sidebar"           //. empty cell
+    "footer footer footer footer";
+
+}
+
+.header_div {
+  grid-area: header;
+}
+
+
+
+
+
+
+/* positioning */
+
+//items
+>justify-items: start/end/center/stretch; (according to row align)
+>align-items: start/end/center/stretch/baseline; (according to column align)
+>place-items; center / center; (both justify/align-items using / or one word)
+
+//whole-Grid
+>justify-content: start | end | center | stretch | space-around | space-between | space-evenly;    
+(align the whole grid within its borders according to row )
+>align-content: start | end | center | stretch | space-around | space-between | space-evenly;    
+(align the whole grid within its borders according to column )
+>place-content: center / center; (both justify/align-content using / or one word)
+
+grid: grid-template-rows | grid-template-columns | grid-template-areas | grid-auto-rows | grid-auto-columns | grid-auto-flow
+
+//stretched width but height is according to content
+justify-items: center; with align-content: center;
+
+
+//item-itself
+justify-self: against row
+align-self: against column
+place-self: justify/align align
+
+you can place the html tags inside a container just below each other
+for a mobile query
+then use grid on the container and them to position in a grid for desktop
+
+
+display: contents
+on a grid child let this child's children act as if they are part of the grid
+and the child disappears
