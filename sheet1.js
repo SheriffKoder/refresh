@@ -23,134 +23,235 @@
     
     
     /*////////////////////////////////////////////////////////////////////*/
-    //////// CSS Specificity
-    {/*
-    
-    CSS Cascade (Priority) for the same style-property only, else is applied
-    1.HTML inline                                           score 1000
-    1.1 html header style
-    3.Direct specificity/Last specified
-    2.Layer                                                 score 
-    4.ID                                                   score 100
-    5.Class/attribute(required, href=.. )/pseudo-selectors(::hover etc) score 10
-    6.Type                                                  score 1
-    * + > ~ _ || have no impact over specificity score      score 0
-    
-    .para:first-of-type << highest hit 5 5 (wins) -> color:white
-    p.para << hit 5 6  -> color:red
-    
-    #para -> color:red (now color:red has been enhanced by a hit so wins with this)
-    
-    
-    if same type, then the more count the more priority
-    .class .class wins over .class
-    #id .class wins over .class .class
-    #id .class .class wins over #id .class
-    
-    
-    Website style over browser style
-    */}
-    
-    /*////////////////////////////////////////////////////////////////////*/
-    /*CSS*/
-    {
-    
-    ///// backgrounds 
-    /*
-    (color-in, color-out 75%)   //having total % of
-    (circle on top, color1, %, color2)    //color1, tillhere, color2
-    
-    keyframes {
-        0%, 100%  ease-out
-        50% ease-in
-    }
-    
-    */
-
-
-
-    }
-    
-    
     ///// Javascript
     
 
-
-
-
-
     //use '' when inside in html events when outer is " "
+
+
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
 
     //Objects
     //everything in js is an object
+
+    //Copy or convert an object to an array
+    //but not use when adding methods inline to it
+    const objectname = [...foo]; 
+    
+
+    
+
+
+
+
+
+
+    //prototype chain
+    //Array.prototype / arr.__proto__ gives all its js-methods
+    //arr.__proto__.__proto__  (gives the object.prototype because its an instance of object) (up+1)
+    //arr.__proto__.__proto__.__proto__ gives null (up+2) (JS-Object-type which has prototype of null)
+
+
+
+
+    //the constructors are from an Object parent which has no prototype(null)
+    //when calling js checks the object then the prototype
+
+    function Object1 (name1) { //this is a prototype of JS-Object-type
+        this.name = name1;      //copied later
+
+        /* closures with constructors */
+        //initializing methods in the constructor) 
+        //can take advantage of closures by making use of local variables 
+        //defined within the constructor in your methods.
+        var barkCount = 0;
+        this.bark = function() {
+            barkCount++;
+            alert(this.name + " bark");
+        };
+
+        
+    }
+
+
+
+
+    Object1.prototype.sayName = function () { //shared later
+        return this.name;
+    }
+
+    //copy constructors
+    //new keyword cannot be used with arrow functions
+    let Object2 = new Object1 ("Obj2");
+    Object2.sayName();
+
+    //copy constructors's prototypes - prototypal inheritance
+    Object2.prototype = Object.create(Object1.prototype);
+    let prototypeOfLeo = Object.getPrototypeOf(Lion);
+
+
+
+
 
     person[myDataName] = myDataValue;
     Obj.["two letter"]
     Obj.[name+ "extension"]
 
+    // Object.keys only returns own keys/property names
+    console.log(Object.keys(constrcutorName));   
+    // constrcutorName's properties
+
     =transfer structured data
-    alert(key in user);   //true as key exists in user
+    // for..in loops over both own and inherited keys, so use hasOwnProperty to filter for its properties
+    // because its inherited from its "own" prototype methods
+    for(let prop in constrcutorName ) {
+        
+        if ( constrcutorName .hasOwnProperty(prop)) {
+            console.log(prop); 
+        }
+    }
+
     Let obj = { [promptfruit]: 4 };	alert(obj.apple);
-    For (let x in obj)
     Obj in obj
 
     let x = object.toString();
 
-    //Object constructors
+
+    //Literal/constructor object prototype methods
+    .constructor, hasOWnProperty(), isPropertyOf(), propertyIsEnumerable(), 
+    toLocaleString (), toString (), and valueOf ().
+    //"new Object" does not have these
+
+    /* Object-Constructors */////////////////////////////////////////////////
+    
+    const cat = {
+        makeSound: function () {
+          console.log(this.sound);
+        }
+      }
+      
+      let cat2 = {
+        jumps: true,
+        __proto__: cat   //cat2 has cat as a prototype
+      };
+      
+      // Object.keys only returns own keys/property names
+      console.log(Object.keys(cat2));   //jumps
+      
+      const kiko = Object.create(cat);
+      //cat is a prototype of kiko, which is/should-be the constructor
+      kiko.sound = "mew";
+      kiko.makeSound();
+      
+
+
+
+    /* Class-Constructors */////////////////////////////////////////////////
+
+    //class syntax, new way for defining constructors
+    class City {
+        constructor(name, traveled) {
+        this.name = name;
+        this.traveled = false;
+        }
+
+        //methods here, shared like prototypes
+        eat(amount) {
+        }
+        
+    }
+
+    //use extends and super to take from a previous class's constructor
+    class Street extends City {
+        constructor (name) {
+        super(name)
+        }
+    }
+    
+    const myTown = new Street("Name");
+    console.log(myTown.name);
+  
+
+    /* Function-Constructors */////////////////////////////////////////////////
+    /*
+    Constructor's this.name Can be used outside global using 
+    window.name, to avoid that use "use strict"; line to disallow 
+    for lines below
+    */
+
+
+
+
     function Toy (sound) {
         this.soundnew = sound;
         this.quacknew = fnPara or function () {
                         console.log(this.sound);
                     }
     }
+
     var Duck = new Toy ("quack"); // new copy of Toy is named accessed by the name Duck
-    console.log (typeof toy); //object !!
+    console.log (typeof toy); //object
     console.log (Duck instanceof Toy); //true
+    Duck.constructor === Toy; //true
     Duck.soundnew //quack
-    Var Toys = [Duck, Car];
+    var Toys = [Duck, Car]; //array of constructor-children
 
 
     
-    Function family (father1, mother1) {
-        This.father = father1;
+
+    function family (father1, mother1) {
+        this.father = father1;
     }
 
     Let mark = new person(green, 38); //mark instance of person
     Let family1 = new family (mark, Anna);
-    Family1.father.eyecolor;
+    Family1.father.eyecolor;    //add on fly?
     
-    Pass objects to constructors (type of object)
+    //Pass objects to constructors (type of object)
     this.make = parameter.makeyear;
     
-    Fido instance of dog // true
-    spot.hasOwnProperty("protovalue"); //false
-    spot.hasOwnProperty("directvalue"); //true
+    Fido instance of Dog // true
+    Fido.hasOwnProperty("protovalue"); //false
+    Fido.hasOwnProperty("directvalue"); //true
     
 
     DogConstructor.prototype.bark = fn ();
     Fido.bark(); //direct access or extended access
     //prototypes are invoked when called not stored in memory
-    Keep prototypes to methods
-    Methods check on this.value and change it
-    
+    //they inherit the object's properties
+    //its code shared between between on creations but not copied
+
+    //Keep prototypes to methods
+    //Methods check on this.value and change it
+    //starting with the constructor object first then the prototype
+
+    Dog.prototype = {
+        eat() {return this}, 
+        //method, this returns the new apple creations called on
+      }
 
     ShowDog.prototype.constructor = ShowDog; //set creator
     
     ShowDog.prototype = new Dog();   //or aDog;
-    For the new showDog to inherit from Dog's properties also
-    Predefined, for ready methods/text
+    //For the new showDog to inherit from Dog's properties also
+    //Predefined, for ready methods/text
         
 
     function ShowDog2 (name, breed, weight, handler) {
  
         Dog.call(this, name, breed, weight);    
         //call reuse these parameters here to be processed
-        //invokes Dog, passes it to use as this, 
-        //pass ShowDog2 parameters to the Dog parameters
+        //the this. and name etc.
+        //instead of writing it again
+        //pass ShowDog2 parameters to the Dog parameters and return here
+        //similar to using extend/super in class constr
         this.handler = handler;
    }
 
-    //create custom methods
+
+
+    /* create custom methods */////////////////////////////////////////////////
     //this is "fido"
     fido.toString = function () {
         return this.name + " Dog Weight " + this.weight;
@@ -161,10 +262,36 @@
     console.log(fido.prototype); //undefined
 
 
+    //any function will have this prototype property now
+    function.prototype.mybind = function () {};
 
 
 
+    /* Object.create */////////////////////////////////////////////////
+    //Object.create on constr / constr
+    //copy prototypes
+    Employee.prototype = Object.create(Person.prototype); 
 
+    //Object.create on object / object
+    //cat is a prototype of kiko
+    const kikoObj = Object.create(catObj);
+    //cat { name = "defaultName"; } // Kiko.name = "Kiko"
+    //if Kiko.name not declared, the default will be used
+
+
+    //manual prototype assign
+    function objectCreate (proto) {
+        const obj = {};
+        Object.setPrototypeOf(obj, proto);
+        return obj;
+    }
+  
+
+
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
+    /*////////////////////////////////////////////////////////////////////*/
 
 
 
@@ -783,3 +910,57 @@
     .charCode,  returns unicode character code of the key tiggered the event
     .changeTouches, returns all touch objects state changed between previous touch and this touch
     
+    .clipboardData, returns an object of data affected by the clipboard operation
+    .code, returns code of the key triggered the event
+    .composed, returns whether the event is composed or not
+    .ctrlKey, whether the CTRL key was pressed when the mouse event is triggered, mouse/keyboard/touch event
+
+    .currentTarget, returns the element whose event listeners triggered the event
+    .target, returns the element on which the event occured
+
+
+
+
+
+
+
+
+    ///JS-practices
+
+    //
+    function getFullName(user) {
+        const { firstName, lastName } = user; // instead of const firstName = user.firstName;
+        return `${firstName} ${lastName}`;
+    }
+  
+    //// another way of returning
+    function processInput(input) {
+        // then a miracle occurs
+            return { left, right, top, bottom };
+    }
+    // the caller selects only the data they need
+    const { left, top } = processInput(input);
+  
+    //return `How are you, ${name}?`; better than   return 'How are you, ' + name + '?';
+  
+
+    //
+    const [first, second] = arr; // first = arr[0], second = arr[1]
+
+
+    //
+    const newFunction = function DescriptiveFunctionNameHere () {
+    }
+
+    //wrap immediately invoked functions
+    (function () {
+
+    }();)
+
+    //declare function names if will use in if/loops
+    let test;
+    if (currentUser) {
+    text = () => {};
+    }
+
+    //never name a parameter the name "arguments" not to take precedence over the arguments object
