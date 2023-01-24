@@ -691,6 +691,13 @@
     //divTest.style.cssText = "overflow: scroll;";
     //divTest.onScroll = fn;
 
+    .deltaX, scrolling value, -left, +right otherwise 0, read-only, most mouses does not use
+    .deltaY, -up/+down
+    .deltaZ, returns value on zoom -out/+in
+    .deltaMode, returns deltaX,Y,Z
+
+
+
     // get variable from inline style
     element.style.getPropertyValue("--my-var");
 
@@ -900,6 +907,13 @@
 
     ///////DOM Properties
 
+
+    .currentTarget, returns the element whose event listeners triggered the event
+    .target, returns the element on which the event occured
+    e.data, returns the characters inserted with the event like on input
+    .dataTransfer, returns the object containing the data being dragged/dropped or inserted/deleted
+
+
     .wheel          // mouse wheel roll 
     .altKey, returns whether the ALT key was pressed
     .animationName, return animation name
@@ -914,9 +928,8 @@
     .code, returns code of the key triggered the event
     .composed, returns whether the event is composed or not
     .ctrlKey, whether the CTRL key was pressed when the mouse event is triggered, mouse/keyboard/touch event
-
-    .currentTarget, returns the element whose event listeners triggered the event
-    .target, returns the element on which the event occured
+    
+    .defaultPrevented, pereventDefault was called for the event?
 
 
 
