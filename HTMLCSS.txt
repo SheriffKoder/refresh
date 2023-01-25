@@ -35,19 +35,33 @@ svg image code to alter with css
 
 
 text
+<q> short line quotation, adds quote marks, used with cite attr.
+<blockqoute> break line quotation
+<cite> content is a reference link/text, italic
+
+
+
 <pre> exact as written, <bdi> isolate direction, <bdo> overrides current directionality
 <code> monospace code
 <data> links using value attr, with machine readable translation
 <dfn> the defining term in the sentence given an id
 
+<br> a line break in text, useful in p tags etc.
 <em> stressed emphasis compared to surrounding text
 <strong> greater emphasis
 <cite> add reference link/text to author, italic
 <i> used for mood, change in language using attr lang
 font-style for styling without importance
+<mark> add a highlighter, can appear for assistive tech. using :before/after
+
 
 <kbd> represents a keyboard-button displayed in monospace
   to be styled to show a button like background
+
+////////////////////////////////////////////////////////
+<ruby> directional text to baseline, 
+  <rp> fallback for <ruby>
+  <rt> ruby text component of a ruby annotation for east asian typo, 
 
 
 
