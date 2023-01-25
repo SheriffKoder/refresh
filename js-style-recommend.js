@@ -93,6 +93,16 @@ function concatenateAll(...args) {
   return args.join('');
 }
 
+// never call a function and put its value in a new definition
+//consistency in function declaration spacings
+//try to not resuse same parameters in different functions
+
+// good
+function f2(obj) {
+  const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
+}
+
+
 
 
 
