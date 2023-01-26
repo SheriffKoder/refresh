@@ -72,7 +72,8 @@
     Object.defineProperty(obj, key, value); //value can be an object
 
 
-
+    //use objects with special names
+    // to contain other objects of methods and properties
 
 
     ////////////////////////////////////////////////////////////////////////
