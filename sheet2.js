@@ -1,5 +1,42 @@
 
 
+/*
+Index
+
+Prototype-chain
+context, Object.assign, 
+
+1) Constructor-pattern: 
+  Classic constructors 
+    with Closures, .call extending, 
+    Prototypes
+    instance, ownproperty, constructor
+    prototypal inheritance
+
+    external object to store methods
+    factory functions
+  
+  Class constructors
+    Decorator style
+    Singleton style
+    Extending using extend/super
+    Pseudo-classical Decorators
+
+
+  
+2) Module Pattern
+  Object constructors
+    prototypal inheritance
+
+  Factory Functions
+    Private/Public
+    Iffy();
+
+3) Mixins
+
+*/
+
+
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 
@@ -142,6 +179,7 @@ Fido.hasOwnProperty("protovalue"); //false
 Fido.hasOwnProperty("directvalue"); //true
 Object2.constructor === Object1; //true
 ShowDog.prototype.constructor = ShowDog; //set creator manually
+const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
 
 
 
@@ -254,7 +292,7 @@ class City26 {
     this.methodsObject = actions;
 
 
-    //instance = this;    //Singleton(1)
+    //instance = this;    //Singleton(1) this is the class
     //return instance;
 
     }
