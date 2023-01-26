@@ -17,6 +17,8 @@
 
 //js checks the object then the prototype, when calling for a value,
 
+//when creating a new object "clone" use Object.create(ObjectReferenceName);
+//if for a prototype, name.prototype
 
     /*
     Constructor's this.name Can be used outside global using 
@@ -24,14 +26,40 @@
     for lines below
     */
 
-    //typeof constructors is Object
+//typeof constructors is Object
+//context === this
+//scope === variable access scope
+//window.a is the global scope
+//a is a local scope
+
+//changing-context//
+//Dog.call(this, sd_name, sd_breed, sd_weight);
+//obj.sayFoo.call(window,1,2); //changed the context to be in window, 2nd parameter+ is the passed arguments
+//obj.sayFoo.apply(window,[1,2]); //changed, apply takes two arguments, the context, array or passed arguments
+//var myBoundFoo = obj.sayFoo.bind(window); //takes one argument, returns a bound function, good for performance as functions not called
+//click event runs on the context on what it was clicked in ex. body.onclick
+
+//Object.assign(target,source)
+//copies/replaces to target objects from one or more source objects
+
+
+//return Object.assign({}, iffyCopy, {doSomething});
+//assign creates joins an empty object with the following arguments
+//
+const greeter = (name) => Object.assign(Object.create(proto), {
+    name
+  });
+const george = greeter('george');
+//
+const george = Object.assign({}, proto, {name: 'George'});
+const msg = george.hello();
 
 
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
-/* Classic/Function-Constructors *////////////////////////////////////////////////
+/* Constructor Pattern: Classic/Function-Constructors *////////////////////////////////////////////////
 
 function Object1 (name1, passObj) { //this is a prototype of JS-Object-type
     
@@ -136,13 +164,47 @@ Object2.prototype = Object.create(Object1.prototype);
 let prototypeOfLeo = Object.getPrototypeOf(Lion);
 
 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+/* classic extras */
+
+//ex1//
+//using an external object to store methods
+const AnimalMethods = {
+    nameFn() {}
+} 
+function Animals (name) {
+  this.displayName = AnimalMethods.nameFn; //(1) //one by one
+    let AnimalCopied = Object.create(AnimalMethods); //(2) // many methods
+}
+//*****************/
+
+
+//factory-functions//
+//return parameters and properties to create new instances
+const personFactory = (name, age) => {
+    const sayHello = () => console.log('hello!');
+    return { name, age, sayHello };
+  };
+  
+  const jeff = personFactory('jeff', 27);
+  jeff.sayHello();
+//*****************/
+  
+
+
+
+
+
+
+
 
 
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
-/* Object-Constructors *////////////////////////////////////////////////
+/* Module Pattern: Object-Constructors *////////////////////////////////////////////////
     
     const cat1 = {
 
@@ -175,33 +237,188 @@ let prototypeOfLeo = Object.getPrototypeOf(Lion);
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
-/* Class-Constructors */////////////////////////////////////////////////
+/* Constructor Pattern: Class-Constructors */////////////////////////////////////////////////
+//singleton, decorators
+
 
 //class syntax, new way for defining constructors
+let instance;
 class City26 {
-    constructor(name*, traveled*) {
-    this.name = name;
+    constructor(name, traveled, actions) {
+    this.name = name || "no name provided";
     this.traveled = false;
+
+    //Decorator
+    this.cost = 1000;
+
+    this.methodsObject = actions;
+
+
+    //instance = this;    //Singleton(1)
+    //return instance;
+
     }
-  
-    //methods here, shared like prototypes
-    eat(amount) {
+
+    //Decorator
+    getCost() {
+      return this.cost;
     }
+
     
-  }
-  
-  //take these, put like in City, add new definitions
-  //mixin pattern, superclass/base(city) and sub-class(Street)
-  //use extends/super to take from a previous class's constructor
-  class Street extends City26 {
-    constructor (TownName*, TownTraveled*,streetsCount) {
-    super(TownName*, TownTraveled*)     //pass these to the city object and will return this.name/traveled
-        this.streetsCount = streetsCount; //write what is not written in City26
+    //methods here, shared like prototypes
+    getName() {
+        return this.name;
     }
+
+
+  }
+
+class Street extends City26 {
+  constructor (TownName, TownTraveled,streetsCount) { 
+  super(TownName, TownTraveled)     //pass these to the city object and will return this.name/traveled //can leave empty if will use nothing
+      this.streetsCount = streetsCount; //write what is not written in City26
+  }
+}
+
+//Decorator
+class Trip extends City26 {
+  constructor (Visit) {
+      super();
+      this.Visit = Visit;
+  }
+
+  getCost() {
+      return this.Visit.getCost() + 75; //adjust to return this.cost" +75, where cost is already in the masterclass
+  }
+
+}
+
+let Street100 = new Street("101", false, 3);
+console.log(Street100);
+//output: Street {name: '101', traveled: false, streetsCount: 3}
+
+///** */
+//Decorator
+Street100 = new Trip(Street100);
+console.log(Street100.getCost());//1075
+Street100 = new Trip(Street100);
+console.log(Street100.getCost());//1150
+
+
+//Pseudo-classical Decorators
+//pass the whole parameters using one object
+const propertiesArguments = {
+    name: 'Remember to buy the milk',
+    traveled: false,
+    actions: {
+        summary() {
+            return 'alot of cities to travel to!';
+        },
+        placeOrder() {
+            return 'reserve ticket?';
+        },
+    },
+  };
   
+const todoItem = new City26(propertiesArguments);
+console.log(todoItem.methods.summary());
+
+
+
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+/* Module Pattern: Factory Functions /Private-scope/Public-scope *//////
+
+//iffy, self calling function, allows using its returns
+//Factory functions contains private/public
+//private: starts with _
+//publics have access to private properties
+var iffyFactoryFunction = (function (name) {
+    var _myPrivateFunction = function () { //cant be called outside: private
+      console.log("Private "+ name);
+    }
+
+    var myRevealingPublicFunction = function () { //cant be called outside: private
+        console.log("Private "+ name);
+      }
+
+    //way1
+    return {
+        myPublicFunction : function () {
+            console.log("Public "+ name);
   
+        },
+    }
+
+    //way2: revealing mode, to use as variable .returned_1();
+    return { returned_1: myRevealingPublicFunction  }
+  
+  })//(argument1 || argument2 );
+  
+
+  //iffyFunction.myPublicFunction();
+  
+  //call the factory function here instead of self call to use its returned
+  //const function returns a new object containing iffy and defined properties
+  //composition style, separating methods from states
+  const Nerd2 = (name) => {
+    const iffyCopy = iffyFactoryFunction(name);   //the myPublicFunction with custom parameter
+    const doSomething = () => console.log("something");
+    return Object.assign({}, iffyCopy, {doSomething});
   }
   
-  const Street100 = new Street("101", false, 3);
-  console.log(Street100);
-  //output: Street {name: '101', traveled: false, streetsCount: 3}
+  let newNerd2 = Nerd2("jeff");
+  console.log(newNerd2);
+  newNerd2.myPublicFunction();
+  
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+/* Mixins *///////////////////////////////////////////////////////////
+
+class Car {
+    constructor({model, color}) {
+      this.model = model || "no model provided";
+      this.color = color || "no color provided";
+    }
+}
+
+class LeftAnimator {
+    moveLeft() {
+        console.log('move left');
+      }
+  }
+  
+
+//function extends passed class
+const MyMixins = (PassedClass) =>
+    class extends PassedClass {
+        moveUp() {
+            console.log('move up');
+        }
+        moveDown() {
+            console.log('move down');
+        }
+        stop() {
+            console.log('stop! in the name of love!');
+        }
+    };
+
+//here we pass a class and also extend it to a name to be used 
+class myAnimator1 extends MyMixins(LeftAnimator) {};
+class MyCar extends MyMixins(Car) {}; 
+const MyCar2 = new MyCar({model: "ford", color:"blue"});
+MyCar2.moveUp();
+
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+

@@ -257,6 +257,17 @@
     Return string.split("").reverse().join(""); 
     //->array // -> array method //-> output string
 
+
+    //the scope chain/lexical-scope can be traced inwards, related to closure
+    function names () {
+        let name = "name"
+        function names2 () {
+            function names3 () {
+                //name can be used here
+            }
+        }
+    }
+  
     
       
     
@@ -482,7 +493,10 @@
     //////// Events
     {
 
-    
+    //*
+    //object.on('event', payload => console.log(payload));
+
+    //click event runs on the context on what it was clicked in ex. body.onclick
     console.lo(e) //show all properties 
     e.type //type of event
     
