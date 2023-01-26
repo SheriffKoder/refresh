@@ -28,6 +28,19 @@
 
     //use '' when inside in html events when outer is " "
 
+    undefined;
+    function sum() {
+        //"use strict";   //makes this un-global for the below lines even in inner scopes except for arrow functions
+        this.myNumber = 20; // add 'myNumber' property to global object
+
+    }
+    // sum() is invoked as a function
+    // this in sum() is a global object (window)
+    console.log(window.myNumber); //undefined
+    sum();     // => 31
+    console.log(window.myNumber); //20, when sum is called the this's become global
+
+
 
     /*////////////////////////////////////////////////////////////////////*/
     /*////////////////////////////////////////////////////////////////////*/
@@ -35,256 +48,89 @@
     //Objects
     //everything in js is an object
 
+    const newObject = {};
+    const newObject = Object.create(Object.prototype);
+    const newObject = new Object();
+    //Object here is the main JS Object
+
+    let Object1 = {
+        key1:  1,
+        
+        key2: { },  //can be an object holding anything, fn/obj/arr
+        
+        functionName: function (myConfig) {
+            this.myConfig = myConfig
+        }
+
+    };
+
+    //access data
+    Object1.key3 = 3;           //add on fly or access property
+    person[myDataName] = myDataValue;
+    Obj.["two letter"]
+    Obj.[name+ "extension"]
+    Object.defineProperty(obj, key, value); //value can be an object
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////
     //Copy or convert an object to an array
     //but not use when adding methods inline to it
     const objectname = [...foo]; 
     
+    let x = object.toString();
 
-    
-
-
-
-
-
-
-    //prototype chain
-    //Array.prototype / arr.__proto__ gives all its js-methods
-    //arr.__proto__.__proto__  (gives the object.prototype because its an instance of object) (up+1)
-    //arr.__proto__.__proto__.__proto__ gives null (up+2) (JS-Object-type which has prototype of null)
-
-
-
-
-    //the constructors are from an Object parent which has no prototype(null)
-    //when calling js checks the object then the prototype
-
-    function Object1 (name1) { //this is a prototype of JS-Object-type
-        this.name = name1;      //copied later
-
-        /* closures with constructors */
-        //initializing methods in the constructor) 
-        //can take advantage of closures by making use of local variables 
-        //defined within the constructor in your methods.
-        var barkCount = 0;
-        this.bark = function() {
-            barkCount++;
-            alert(this.name + " bark");
-        };
-
-        
-    }
-
-
-
-
-    Object1.prototype.sayName = function () { //shared later
-        return this.name;
-    }
-
-    //copy constructors
-    //new keyword cannot be used with arrow functions
-    let Object2 = new Object1 ("Obj2");
-    Object2.sayName();
-
-    //copy constructors's prototypes - prototypal inheritance
-    Object2.prototype = Object.create(Object1.prototype);
-    let prototypeOfLeo = Object.getPrototypeOf(Lion);
+    //JS Object has a prototype containing all methods
+    //Literal/constructor object prototype methods
+    //"new Object" definitions do not have these
+    .constructor, .hasOWnProperty(), .isPropertyOf(), .propertyIsEnumerable(), 
+    .toLocaleString(), .toString(),  .valueOf().
 
 
 
 
 
-    person[myDataName] = myDataValue;
-    Obj.["two letter"]
-    Obj.[name+ "extension"]
-
+    ///////////////////////////////////////////////////////////////////
     // Object.keys only returns own keys/property names
     console.log(Object.keys(constrcutorName));   
     // constrcutorName's properties
 
-    =transfer structured data
-    // for..in loops over both own and inherited keys, so use hasOwnProperty to filter for its properties
+    //transfer structured data
+    // for/in loops over both own and inherited keys, so use hasOwnProperty 
+    //to filter for its properties
     // because its inherited from its "own" prototype methods
     for(let prop in constrcutorName ) {
         
-        if ( constrcutorName .hasOwnProperty(prop)) {
+        if ( constrcutorName.hasOwnProperty(prop)) {
             console.log(prop); 
         }
     }
 
+
+    ///////////////////////////////////////////////////////////////////
     Let obj = { [promptfruit]: 4 };	alert(obj.apple);
     Obj in obj
 
-    let x = object.toString();
 
 
-    //Literal/constructor object prototype methods
-    .constructor, hasOWnProperty(), isPropertyOf(), propertyIsEnumerable(), 
-    toLocaleString (), toString (), and valueOf ().
-    //"new Object" does not have these
-
-    /* Object-Constructors */////////////////////////////////////////////////
-    
-    const cat = {
-        makeSound: function () {
-          console.log(this.sound);
-        }
-      }
-      
-      let cat2 = {
-        jumps: true,
-        __proto__: cat   //cat2 has cat as a prototype
-      };
-      
-      // Object.keys only returns own keys/property names
-      console.log(Object.keys(cat2));   //jumps
-      
-      const kiko = Object.create(cat);
-      //cat is a prototype of kiko, which is/should-be the constructor
-      kiko.sound = "mew";
-      kiko.makeSound();
-      
-
-
-
-    /* Class-Constructors */////////////////////////////////////////////////
-
-    //class syntax, new way for defining constructors
-    class City {
-        constructor(name, traveled) {
-        this.name = name;
-        this.traveled = false;
-        }
-
-        //methods here, shared like prototypes
-        eat(amount) {
-        }
-        
-    }
-
-    //use extends and super to take from a previous class's constructor
-    class Street extends City {
-        constructor (name) {
-        super(name)
-        }
-    }
-    
-    const myTown = new Street("Name");
-    console.log(myTown.name);
-  
-
-    /* Function-Constructors */////////////////////////////////////////////////
-    /*
-    Constructor's this.name Can be used outside global using 
-    window.name, to avoid that use "use strict"; line to disallow 
-    for lines below
-    */
-
-
-
-
-    function Toy (sound) {
-        this.soundnew = sound;
-        this.quacknew = fnPara or function () {
-                        console.log(this.sound);
-                    }
-    }
-
-    var Duck = new Toy ("quack"); // new copy of Toy is named accessed by the name Duck
-    console.log (typeof toy); //object
-    console.log (Duck instanceof Toy); //true
-    Duck.constructor === Toy; //true
-    Duck.soundnew //quack
-    var Toys = [Duck, Car]; //array of constructor-children
-
-
-    
-
-    function family (father1, mother1) {
-        this.father = father1;
-    }
-
-    Let mark = new person(green, 38); //mark instance of person
-    Let family1 = new family (mark, Anna);
-    Family1.father.eyecolor;    //add on fly?
-    
-    //Pass objects to constructors (type of object)
-    this.make = parameter.makeyear;
-    
-    Fido instance of Dog // true
-    Fido.hasOwnProperty("protovalue"); //false
-    Fido.hasOwnProperty("directvalue"); //true
-    
-
-    DogConstructor.prototype.bark = fn ();
-    Fido.bark(); //direct access or extended access
-    //prototypes are invoked when called not stored in memory
-    //they inherit the object's properties
-    //its code shared between between on creations but not copied
-
-    //Keep prototypes to methods
-    //Methods check on this.value and change it
-    //starting with the constructor object first then the prototype
-
-    Dog.prototype = {
-        eat() {return this}, 
-        //method, this returns the new apple creations called on
-      }
-
-    ShowDog.prototype.constructor = ShowDog; //set creator
-    
-    ShowDog.prototype = new Dog();   //or aDog;
-    //For the new showDog to inherit from Dog's properties also
-    //Predefined, for ready methods/text
-        
-
-    function ShowDog2 (name, breed, weight, handler) {
- 
-        Dog.call(this, name, breed, weight);    
-        //call reuse these parameters here to be processed
-        //the this. and name etc.
-        //instead of writing it again
-        //pass ShowDog2 parameters to the Dog parameters and return here
-        //similar to using extend/super in class constr
-        this.handler = handler;
-   }
-
-
-
-    /* create custom methods */////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
+    //create custom methods
     //this is "fido"
     fido.toString = function () {
         return this.name + " Dog Weight " + this.weight;
     }
+    
+    //change built in methods
     Element.function	//function this is element
-
-    console.log(fido.protoVar); //proto taken from Dog, but fido not have property yet
-    console.log(fido.prototype); //undefined
-
-
     //any function will have this prototype property now
     function.prototype.mybind = function () {};
 
+      
 
 
-    /* Object.create */////////////////////////////////////////////////
-    //Object.create on constr / constr
-    //copy prototypes
-    Employee.prototype = Object.create(Person.prototype); 
 
-    //Object.create on object / object
-    //cat is a prototype of kiko
-    const kikoObj = Object.create(catObj);
-    //cat { name = "defaultName"; } // Kiko.name = "Kiko"
-    //if Kiko.name not declared, the default will be used
-
-
-    //manual prototype assign
-    function objectCreate (proto) {
-        const obj = {};
-        Object.setPrototypeOf(obj, proto);
-        return obj;
-    }
   
 
 
@@ -932,48 +778,3 @@
     .defaultPrevented, pereventDefault was called for the event?
 
 
-
-
-
-
-
-
-    ///JS-practices
-
-    //
-    function getFullName(user) {
-        const { firstName, lastName } = user; // instead of const firstName = user.firstName;
-        return `${firstName} ${lastName}`;
-    }
-  
-    //// another way of returning
-    function processInput(input) {
-        // then a miracle occurs
-            return { left, right, top, bottom };
-    }
-    // the caller selects only the data they need
-    const { left, top } = processInput(input);
-  
-    //return `How are you, ${name}?`; better than   return 'How are you, ' + name + '?';
-  
-
-    //
-    const [first, second] = arr; // first = arr[0], second = arr[1]
-
-
-    //
-    const newFunction = function DescriptiveFunctionNameHere () {
-    }
-
-    //wrap immediately invoked functions
-    (function () {
-
-    }();)
-
-    //declare function names if will use in if/loops
-    let test;
-    if (currentUser) {
-    text = () => {};
-    }
-
-    //never name a parameter the name "arguments" not to take precedence over the arguments object
