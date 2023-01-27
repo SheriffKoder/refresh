@@ -58,8 +58,8 @@ context, Object.assign,
 //if for a prototype, name.prototype
 
     /*
-    Constructor's this.name Can be used outside global using 
-    window.name, to avoid that use "use strict"; line to disallow 
+    Constructor's this.x Can be used outside global using 
+    window.x, to avoid that use "use strict"; line to disallow 
     for lines below
     */
 
@@ -76,8 +76,8 @@ context, Object.assign,
 //var myBoundFoo = obj.sayFoo.bind(window); //takes one argument, returns a bound function, good for performance as functions not called
 //click event runs on the context on what it was clicked in ex. body.onclick
 
-//Object.assign(target,source)
-//copies/replaces to target objects from one or more source objects
+//Object.assign(target,source1, source2)
+//copies/replaces TO target objects FROM one or more source objects
 
 
 //return Object.assign({}, iffyCopy, {doSomething});
@@ -178,7 +178,7 @@ console.log (Object2 instanceof Object1); //true
 Fido.hasOwnProperty("protovalue"); //false
 Fido.hasOwnProperty("directvalue"); //true
 Object2.constructor === Object1; //true
-ShowDog.prototype.constructor = ShowDog; //set creator manually
+ShowDog.prototype.constructor = ShowDog; //set the right constructor for prototypes manually
 const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
 
 
@@ -187,7 +187,7 @@ var newObjects = [Object2, Object3]; //array of constructor-children
 
 
 //ex
-Let mark = new person(green, 38); //mark instance of person
+Let mark = new person(greenEye, 38); //mark instance of person
 Let family1 = new family (mark, Anna);
 Family1.father_property.eyecolor;    //add on fly?
 
@@ -300,7 +300,7 @@ class City26 {
     //Decorator
     getCost() {
       return this.cost;
-    }
+    }   // no , between methods
 
     
     //methods here, shared like prototypes
@@ -358,7 +358,7 @@ const propertiesArguments = {
     },
   };
   
-const todoItem = new City26(propertiesArguments);
+const todoItem = new City26(propertiesArguments); //city takes {name,traveled,methods{}}
 console.log(todoItem.methods.summary());
 
 
@@ -459,4 +459,41 @@ MyCar2.moveUp();
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
+/*Summary
 
+.assign a property to an object
+change context using .call/.bind
+
+pass objects as arguments/parameter-type-object(this.objProp)
+group instances into an array
+use closure functions that uses local variables
+chain constructors using prototypes family.father.eyeColor
+
+
+classic (new)
+    properties
+    prototypes(using = or .setPrototype) to store methods or use outer object
+
+factory functions
+returns properties whole/name, make them public by self calling ();
+
+
+Objects (Object.create)
+    __proto__ = another object
+
+class
+    constructor
+    properties
+methods
+
+
+Mixins
+make an arrow function(x) containing
+    class extends x
+        methods
+to extend passed class (to give methods)
+
+
+
+
+*/
