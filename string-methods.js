@@ -669,13 +669,23 @@ e.data, returns the characters inserted with the event like on input
 .deltaMode, returns deltaX,Y,Z
 
 
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+e.detail // returns how many times the mouse was clicked in the same time, used in an onclick event as a property
+e.elapsedTime //used with an animationiteration/transitionend event, returns how many seconds the animation has been running
+e.eventphase //returns which phase of the event flow is currently being evaluated, NONE / CAPTURING_PHASE / AT_TARGET / BUBBLING_PHASE
+
+e.getModifierState("capslock"); //returns true if a modifier key was pressed like alt/AltGraph/Control/Meta/Shift/Capslock/NumLock/Scrolllock with locks turn it on/off with the key
+e.inputType //returns the type of change that was done by the event
+isComposing //true/false
 
 
 
 
 
 
-*/
+
 /*////////////////////////////////////////////////////////////////////*/
 /*
 
