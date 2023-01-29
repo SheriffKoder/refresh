@@ -237,7 +237,7 @@ function concatenateAll(...args) {
 
 // never call a function and put its value in a new definition
 //consistency in function declaration spacings
-//try to not resuse same parameters in different functions
+//try to not reuse same parameters in different functions
 
 // good
 function f2(obj) {
@@ -281,12 +281,38 @@ better use arrow functions
 
 
 */
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+// good
+[1, 2, 3].map((number) => `A string containing the ${number + 1}.`);
+
+// good
+[1, 2, 3].map((number) => {
+  const nextNumber = number + 1;
+  return `A string containing the ${nextNumber}.`;
+});
+
+// good
+[1, 2, 3].map((number, index) => ({
+  [index]: number,
+}));
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+/*
 
 
 check other stylings in this lesson
