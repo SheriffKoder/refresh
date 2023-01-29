@@ -38,6 +38,7 @@ text
 <q> short line quotation, adds quote marks, used with cite attr.
 <blockqoute> break line quotation
 <cite> content is a reference link/text, italic
+<samp>, sample or quoted output, appears in monospace
 
 
 
@@ -53,6 +54,12 @@ text
 <i> used for mood, change in language using attr lang
 font-style for styling without importance
 <mark> add a highlighter, can appear for assistive tech. using :before/after
+<small> side-comments that are displayed in small font size
+
+<s> strike though, something is not available, acc using content
+css strike-through
+<del> strike though, been deleted from the document, acc using content
+<ins> text has been added to the document, acc using content
 
 
 <kbd> represents a keyboard-button displayed in monospace
@@ -66,6 +73,9 @@ font-style for styling without importance
 
 
 /*////////////////////////////////////////////////////////////////////*/
+
+<span> generic container, inline vs <div> is block level
+
 
 <table> 
 <caption> head
