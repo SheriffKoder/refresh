@@ -98,6 +98,12 @@ const msg = george.hello();
 ////////////////////////////////////////////////////////////////////////
 /* Constructor Pattern: Classic/Function-Constructors *////////////////////////////////////////////////
 
+
+//in function constructors
+//any thing that begins with this will be public
+//regular var/const etc. variables are private
+//however can be returned from a this method
+
 function Object1 (name1, passObj) { //this is a prototype of JS-Object-type
     
     this.name = name1;      //copied later
@@ -111,10 +117,16 @@ function Object1 (name1, passObj) { //this is a prototype of JS-Object-type
     this.bark = function() {
         barkCount++;
         alert(this.name + " bark");
+    }
 
     this.walk = walkFunction;
 
-    };
+    Object.defineProperty(this, "age", {
+      get() {
+          //
+      }
+    });
+
 }
 
 //function Dog (name, breed, weight) {};
@@ -278,18 +290,54 @@ const personFactory = (name, age) => {
 /* Constructor Pattern: Class-Constructors */////////////////////////////////////////////////
 //singleton, decorators
 
-
+//anything starts with _ means it is internal and should not be touched outside
 //class syntax, new way for defining constructors
+//typeof function, special functions
+//can be // class User28 //declaration
+//or const NewUser = class User28 //expression
+//or anonymous
+//Classes always use strict automatically
+//Class methods are non-enumerable, sets enumerable flag to false for all methods. 
+//can use a single method without a constr. and use that method like a normal object
+//remember you can use not all lines in class, etc.
+//“Class” notation favors “Inheritance over Composition”. opposing to functions
+
+
 let instance;
 class City26 {
+
+    #width;               //private/not-public property starts with #
+    height = 0;
+
+
+    //static properties cannot be directly accessed on instances of the class
+    //instead they are accessed on the class itself City.GPSparameters;
+    //utility functions, config properties
+    //to call a static method/property within, another static method of the same class, you can use the this keyword.
+
+    static staticProperty = 'someValue here';   //React feature, if error/unsupported use babel compiler
+    static staticMethod() {
+    }
+    static {  //static initialization block, can use more than one
+    }
+    static get staticMethod2() {
+      //this inside a static points to the Class, not the instances like other
+    }
+
+
     constructor(name, traveled, actions) {
-    this.name = name || "no name provided";
-    this.traveled = false;
+    
+    console.log("X" + ClassWithStaticMethod.staticProperty); // 'static property'
+    console.log("X" + this.constructor.staticMethod()); // 'static property'
+  
+    this._name = name || "no name provided";
+    this._traveled = false;
 
     //Decorator
-    this.cost = 1000;
+    this._cost = 1000;
 
-    this.methodsObject = actions;
+
+    this.methodsObject = actions; //pass functions in an object
 
 
     //instance = this;    //Singleton(1) this is the class
@@ -297,26 +345,94 @@ class City26 {
 
     }
 
+    #privateMethod () {
+
+    }
+
     //Decorator
     getCost() {
-      return this.cost;
+      return this._cost;
     }   // no , between methods
 
     
     //methods here, shared like prototypes
     getName() {
-        return this.name;
+        return this._name;
+    }
+
+
+    //look at this, runs by itself because not wrapped
+    //school = prompt("what school ?", "ex");
+
+
+    /////setters/getters properties
+    get fullName() {
+      //return way for value
+      //fullName here used/set/called as a property
+      //function: retrieve the info
+      return `${this._name} ${this._surname}`; //string
+      //return this.calcArea();
+      //just console.log(obj.fullName) will output the fullName
+
+    }
+
+    set fullName (input) {
+      //>>give value in a specific way
+      //what if you want to give the property a value to handle
+      //if code x return y
+      [this._name, this._surname] = input.split(" "); //split input string into two arrays on space
+      
+      //this.setFirstNameMethod(value[0]); // method contains this.firstName = firstName;
+      //this.setLastNameMethod(value[1]);
+      //how it will be presented ? check getter, string of name name
     }
 
 
   }
+  ///end-of-constructor///
 
-class Street extends City26 {
+
+//another way of defining properties even for setters/getters, use only one of two ways of setting setters/getters for the same variable
+Object.defineProperty(City26, "fullName", {
+  get () {
+
+  }
+
+  set (input) {
+
+  }
+});
+
+class SubClassWithStaticField extends ClassWithStaticMethod {
+  static subStaticField = super.staticMethod();
+}
+
+
+class Street extends City26 { //all streets are in cities but not all cities are in streets
   constructor (TownName, TownTraveled,streetsCount) { 
-  super(TownName, TownTraveled)     //pass these to the city object and will return this.name/traveled //can leave empty if will use nothing
+  super(TownName, TownTraveled)         //pass these to the city object and will return this.name/traveled //can leave empty if will use nothing
+                                        //calling the constructor method of the person class
       this.streetsCount = streetsCount; //write what is not written in City26
   }
+
+  sayHi () {
+    //super();?          //super invokes the method it is in of the same name, constr/constr, sayHi()/sayHi()
+  }
+
 }
+
+class Building extends Street {   //futher inheritance
+  constructor(name, traveled, actions, TownName, TownTraveled,streetsCount, BuildingNumber ) { //yes will use/want all of these when creating a building instance,
+    super(name, traveled, actions, TownName, TownTraveled,streetsCount);
+    //what is missing will not be defined here ?
+    //all but building number
+    this.BuildingNumber = BuildingNumber;
+
+  }
+}
+
+const NewBuilding = new Building("Zayed", true, actionsObject, "Beverly", true, 2, 153);
+console.log(NewBuilding);
 
 //Decorator
 class Trip extends City26 {
@@ -331,9 +447,25 @@ class Trip extends City26 {
 
 }
 
-let Street100 = new Street("101", false, 3);
+class DiscountTrip extends City26 {
+  getCost() {
+    super.getCost();
+    return this._cost - 100;
+
+  }
+}
+
+const Coupon = new DiscountTrip();  //const-100
+
+const Street100 = new Street("101", false, 3);  //ES6 syntax const
 console.log(Street100);
 //output: Street {name: '101', traveled: false, streetsCount: 3}
+
+
+console.log(Street100.prototype); //false
+console.log(City26.prototype); //true, proto exists for constructor only not instances
+/*thus*/console.log(City26 === City26.prototype.constructor); // true
+
 
 ///** */
 //Decorator
@@ -411,6 +543,31 @@ var iffyFactoryFunction = (function (name) {
   console.log(newNerd2);
   newNerd2.myPublicFunction();
   
+
+
+
+//composition rather than using inheritance 
+const barker = (state) => ({
+  bark: () => console.log("Woof, I am " + state.name);
+})
+
+const murderRobotDog = (name) => {
+    let state = {
+      name,
+      speed: 100,
+      position: 0
+    }
+    return Object.assign(
+      {},
+      barker(state)
+      //driver(state),
+      //killer(state)
+    )
+
+}
+
+murderRobotDog("sniffles").bark();
+
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
