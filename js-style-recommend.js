@@ -299,8 +299,18 @@ better use arrow functions
 }));
 
 
+//avoid using arrow => functions with comparison operators in the same function <= etc.
+//prefer class over function prototypes
 
+//use class extends for inheritance than function inheritance, it inherits also without breaking instance of
+class PeekableQueue extends Queue {
+  peek() {
+    return this.queue[0];
+  }
+}
 
+//class methods can "return this;" to help with method chaining.
+newPerson.jump().setHeight(20);
 
 
 
