@@ -509,6 +509,10 @@
     .touchcancel    //when touch is interrupted
     
 
+    e.isTrusted // true if invoked by user (onclick) , false if with script (btn.click(); -- in IE all events are trusted except createEvent()
+    e.key   //what is pressed on a keydown event ?
+    e.location // for onkeydown/up key's group location on keyboard A/1:0, LCTRL:1, RCTRL:2, num:3
+
 
 
 
@@ -608,6 +612,8 @@
     HTMLBodyElement.ongamepaddisconnected
     .wheel          // mouse wheel roll 
 
+    e.detail // returns how many times the mouse was clicked in the same time, used in an onclick event as a property
+
 
 
     .onmouseup/down
@@ -635,6 +641,7 @@
     myDiv.style.animation 
 
     .transitionend  //end of css transition
+    e.elapsedTime //used with an animationiteration/transitionend event, returns how many seconds the animation has been running
 
     //hmtl Form/input-submit, 
     form on submit, e.preventDefault(); //avoid refreshing
@@ -791,5 +798,39 @@
     .ctrlKey, whether the CTRL key was pressed when the mouse event is triggered, mouse/keyboard/touch event
     
     .defaultPrevented, pereventDefault was called for the event?
+    e.eventphase //returns which phase of the event flow is currently being evaluated, NONE / CAPTURING_PHASE / AT_TARGET / BUBBLING_PHASE
+
+    e.getModifierState("capslock"); //returns true if a modifier key was pressed like alt/AltGraph/Control/Meta/Shift/Capslock/NumLock/Scrolllock with locks turn it on/off with the key
+    e.inputType //returns the type of change that was done by the event
+    isComposing //true/false
+    e.lengthComputable //true or false for length of the progress can be computable or not
+    e.loaded    //how much work has been loaded
+    
+
+    /*////////////////////////////////////////////////////////////////////*/
+    /* good practices
+
+    function foo(callback) {
+    const val = callback();
+    if (val === true) {
+        // Do something if callback returns true
+        }
+    }
+
+    const x = [1, 2, 3, 4, 5];
+    console.log(...x);  //outputs a string of 1,2,3,4,5
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+    */

@@ -681,6 +681,11 @@ e.inputType //returns the type of change that was done by the event
 isComposing //true/false
 
 
+e.isTrusted // true if invoked by user (onclick) , false if with script (btn.click(); -- in IE all events are trusted except createEvent()
+e.key   //what is pressed on a keydown event ?
+e.location // for onkeydown/up key's group location on keyboard A/1:0, LCTRL:1, RCTRL:2, num:3
+e.lengthComputable //true or false for length of the progress can be computable or not
+e.loaded    //how much work has been loaded
 
 
 
