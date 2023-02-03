@@ -114,3 +114,61 @@ Object-constructors
 
 set, get 
 what the new assignment does
+/*
+//////Classes
+Object constructors
+Prototypes
+Prototypal Inheritance
+strict/global window
+Class constructors
+Mixin
+closures with constructors
+__proto__
+Factory Functions
+call/apply/bind
+private/public
+Object.assign
+Inheritance using factory functions
+revealing module/pattern
+Design patterns: mixin, decorator, pseudo-decorators
+class setters/getters, defineproperty
+private, static class properties
+
+
+
+//////NPM
+npm/webpack install and prepare files
+uninstall loader
+
+more tools: 
+    property attributes
+    webpack-dev-server (live reloading)
+    npm-init.js (root file for config questions)
+    loaders, plugins intro
+
+plugins/asset management
+    plugins config
+    css-loader install,config, use, run
+    images: config, use, run
+    fonts: config, apply in css file, run
+    data files: JSON/CSV/TSV/XML install/config, use
+    global assets: 
+
+output management
+    config
+    HtmlWebpackPlugin: install/config (helps when renaming files outside, outside of the referenced name in code )
+    cleaning code
+
+development
+    source maps (dev-tool): config (to track errors correctly in browser-console)
+    auto-save-run: 
+        watch: config,run (semi-auto)
+        webpack-dev-server: install, config, run (auto)
+        webpack-dev-middleware: install, config, add file, run, open localhost:3000 (auto)
+
+revision
+
+
+**********************************************************************
+*****************************filename.js******************************
+**********************************************************************
