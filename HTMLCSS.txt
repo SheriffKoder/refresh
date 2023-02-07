@@ -49,10 +49,15 @@ text
 
 <br> a line break in text, useful in p tags etc.
 <em> stressed emphasis compared to surrounding text
-<strong> greater emphasis
-<cite> add reference link/text to author, italic
 <i> used for mood, change in language using attr lang
 font-style for styling without importance
+
+<strong> greater emphasis, seriousness, urgency, bold style
+<b> draw attention to text, without indicating that it's more important
+
+<cite> add reference link/text to author, italic
+
+
 <mark> add a highlighter, can appear for assistive tech. using :before/after
 <small> side-comments that are displayed in small font size
 
@@ -64,6 +69,12 @@ css strike-through
 
 <kbd> represents a keyboard-button displayed in monospace
   to be styled to show a button like background
+
+<sub> b-below, for typographical reasons, rather than solely for appearance 
+otherwise use vertical-align css -25%
+<sup>, p-super, like vertical-align: 50%
+The <msub>, <msup>, and <msubsup> MathML elements.
+
 
 ////////////////////////////////////////////////////////
 <ruby> directional text to baseline, 
