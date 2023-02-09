@@ -314,7 +314,17 @@ newPerson.jump().setHeight(20);
 
 
 
+*/
+/*////////////////////////////////////////////////////////////////////*/
+/*
 
+// good for referring to an empty constructor
+class Rey extends Jedi {
+  constructor(...args) {  
+    super(...args);
+    this.name = 'Rey';
+  }
+}
 
 
 

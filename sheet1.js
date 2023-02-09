@@ -396,6 +396,11 @@
     e.propertyName
     consol.log(e.altKey) //output true if event+altpressed
 
+    <body onhashchange="myFunction(event)">
+    function myFunction() {
+    event.oldURL;
+    }
+
 
     //conversion 
     number > number
@@ -530,6 +535,11 @@
     rect = x.getBoundingClientRect();	  //return elements position on screen
     rect.top/bottom/right/left.toFixed();
     window.pageXOffset, window.pageYOffset //add pointer position
+
+    MovementX/Y //returns the horizontal/vertical coordinate of the mouse pointer 
+        //relative to the position of the last mousemove event
+    offsetX/Y //horizontal/Vertical coordinate of the mouse pointer relative to the position of the edge of the target element
+
 
     let w = window.outerWidth; //rightaway
     //get the size of an element use client/inner/outer/offset height/width properties
@@ -784,6 +794,7 @@
 
     .wheel          // mouse wheel roll 
     .altKey, returns whether the ALT key was pressed
+    e.metaKey //returns true if windows/CMD-mac pressed
     .animationName, return animation name
     .bubbles,  bubbling event ?
     .button,    which mouse button pressed when mouse event triggered
@@ -806,6 +817,9 @@
     e.lengthComputable //true or false for length of the progress can be computable or not
     e.loaded    //how much work has been loaded
     
+    new/oldValue //returns the new/old value of the changed storage item
+    newURL/oldURL //onclick[location.hash="part5"], onhashchange=[e.oldUrl, e.newURL]
+
 
     /*////////////////////////////////////////////////////////////////////*/
     /* good practices

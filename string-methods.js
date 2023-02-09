@@ -694,6 +694,21 @@ e.loaded    //how much work has been loaded
 /*////////////////////////////////////////////////////////////////////*/
 /*
 
+//event
+<body onhashchange="myFunction(event)">
+function myFunction() {
+event.oldURL;
+}
+
+e.metaKey //returns true if windows/CMD-mac pressed
+MovementX/Y //returns the horizontal/vertical coordinate of the mouse pointer 
+        //relative to the position of the last mousemove event
+new/oldValue //returns the new/old value of the changed storage item
+newURL/oldURL //onclick[location.hash="part5"], onhashchange=[e.oldUrl, e.newURL]
+
+offsetX/Y //horizontal/Vertical coordinate of the mouse pointer relative to the position of the edge of the target element
+
+
 
 
 
