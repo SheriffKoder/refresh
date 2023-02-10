@@ -44,10 +44,13 @@ text
 
 <pre> exact as written, <bdi> isolate direction, <bdo> overrides current directionality
 <code> monospace code
+<var> name of a variable math/programming context, 
 <data> links using value attr, with machine readable translation
 <dfn> the defining term in the sentence given an id
 
 <br> a line break in text, useful in p tags etc.
+<wbr> position within text where may optionally break a line
+
 <em> stressed emphasis compared to surrounding text
 <i> used for mood, change in language using attr lang
 font-style for styling without importance
@@ -65,6 +68,8 @@ font-style for styling without importance
 css strike-through
 <del> strike though, been deleted from the document, acc using content
 <ins> text has been added to the document, acc using content
+
+<u> solid underline, indicating spelling error, while css text-decoration: red wavy underline;
 
 
 <kbd> represents a keyboard-button displayed in monospace

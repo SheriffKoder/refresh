@@ -680,6 +680,19 @@ class Rey extends Jedi {
   }
 }
 
+//import all what is needed from a single source in one line, separated if many
+import foo, {
+  named1,
+  named2,
+} from 'foo';
+
+//export constants
+//group all imports in the top of code
+
+//modules with single export, prefer the default over named
+export default function foo() {}
+
+
 
 
 
