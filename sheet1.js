@@ -778,7 +778,19 @@
     .setCustomValidity('message');  //element is invalid if set this message and the specified error is displayed
     .myform.noValidate = true; //disable default validation and error messages and validate function on submit event
     
-
+    more complex constraints can be tested 
+    using the Constraint Validation API.
+    
+    validity property
+    customError
+    patternMismatch
+    rangeOverflow
+    rangeUnderflow
+    stepMismatch
+    tooLong
+    typeMismatch
+    valueMissing
+    valid
 
 
 

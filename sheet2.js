@@ -1,5 +1,9 @@
 
 
+
+Object prototype inheritance methods
+>Webpack/Npm module export import Odin4.js/side_notes/ex_restaurant
+
 /*
 Index
 
@@ -292,7 +296,7 @@ const personFactory = (name, age) => {
 
 //anything starts with _ means it is internal and should not be touched outside
 //class syntax, new way for defining constructors
-//typeof function, special functions
+//typeof function, special functions, and functions are objects
 //can be // class User28 //declaration
 //or const NewUser = class User28 //expression
 //or anonymous
@@ -505,6 +509,7 @@ console.log(todoItem.methods.summary());
 //Factory functions contains private/public
 //private: starts with _
 //publics have access to private properties
+//private if declared, public if returned or this.variableName
 var iffyFactoryFunction = (function (name) {
     var _myPrivateFunction = function () { //cant be called outside: private
       console.log("Private "+ name);
@@ -693,7 +698,8 @@ import foo, {
 export default function foo() {}
 
 
-
+book2.multiplicity = book1
+//adds a property of book1, //Association
 
 
 

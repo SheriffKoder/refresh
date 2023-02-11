@@ -169,6 +169,17 @@ development
 revision
 
 
+//////OOP
+    Single Responsibility
+    Coupling
+    ES6
+        Babel: installation/usage
+        JSON:  write, to and from convert
+    Asynchronous code: 
+        CallBacks (summarized)
+        Promise with examples (summarized)
+
+
 **********************************************************************
 *****************************filename.js******************************
 **********************************************************************
