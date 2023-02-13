@@ -3,6 +3,9 @@
 
 Object prototype inheritance methods
 >Webpack/Npm module export import Odin4.js/side_notes/ex_restaurant
+>Babel to allow applying on older browsers (Odin4.js)
+>JSON universal browser/server language format (Odin4.js)
+> Asynchronous code: functions that happen in the background, while the rest of code executes (Odin4.js)
 
 /*
 Index
@@ -701,6 +704,8 @@ export default function foo() {}
 book2.multiplicity = book1
 //adds a property of book1, //Association
 
+Including extensions inhibits refactoring, and inappropriately hardcodes implementation details
+import foo from './foo.js'; //remove .js
 
 
 */

@@ -319,7 +319,13 @@
     Const [aLast, aFirst] = lastOne.split(", ") 
     //return in tow arrays rather than one, useful to spearate
     
-
+    prefer high-order-fn > forEach > for-of/in > for
+    Use map() / every() / filter() / find() / 
+    findIndex() / reduce() / some() / ... 
+    to iterate over arrays, and 
+    Object.keys() / Object.values() / Object.entries() 
+    to produce arrays so you can iterate over objects.
+    
     
     }
     
@@ -539,6 +545,7 @@
     MovementX/Y //returns the horizontal/vertical coordinate of the mouse pointer 
         //relative to the position of the last mousemove event
     offsetX/Y //horizontal/Vertical coordinate of the mouse pointer relative to the position of the edge of the target element
+    pageX/Y   //horizontal/vertical coordinate of the mouse pointer at trigger time (relative to the document)
 
 
     let w = window.outerWidth; //rightaway
@@ -652,6 +659,9 @@
 
     .transitionend  //end of css transition
     e.elapsedTime //used with an animationiteration/transitionend event, returns how many seconds the animation has been running
+    e.propertyName //used on transitionend event, returns the first transition property used name
+    pseudoElement //returns the name of the pseudo-element of the animation or transition
+    
 
     //hmtl Form/input-submit, 
     form on submit, e.preventDefault(); //avoid refreshing
@@ -828,7 +838,9 @@
     isComposing //true/false
     e.lengthComputable //true or false for length of the progress can be computable or not
     e.loaded    //how much work has been loaded
-    
+    onemptied //when media file suddenly unavailable
+    e.persisted //if webpage is loaded directly from the server/or cached, used on onpageshow/onpagehide events
+
     new/oldValue //returns the new/old value of the changed storage item
     newURL/oldURL //onclick[location.hash="part5"], onhashchange=[e.oldUrl, e.newURL]
 

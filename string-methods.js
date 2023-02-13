@@ -711,6 +711,14 @@ offsetX/Y //horizontal/Vertical coordinate of the mouse pointer relative to the 
 
 
 
+onemptied //when media file suddenly unavailable
+pageX/Y   //horizontal/vertical coordinate of the mouse pointer at trigger time (relative to the document)
+e.persisted //if webpage is loaded directly from the server/or cached, used on onpageshow/onpagehide events
+
+e.propertyName //used on transitionend event, returns the first transition property used name
+pseudoElement //returns the name of the pseudo-element of the animation or transition
+
+
 
 
 */
