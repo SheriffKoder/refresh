@@ -17,6 +17,7 @@ Body:
 <section> //standalone section of a document, put header
 <aside> //unrelated like ads
 
+
 can access an id element by adding #id to page's url
 or just the id in the href
 :target //receive mouse click or touch /when a link=#p1 and p has id=p1
@@ -29,9 +30,12 @@ parent:target-within //Selects a parent when one of its descendants is a target
 <Label for="name"> </><input id="name>
 <input><span:before>
 <a href=#idname> <p id="idname">	//link scroll to p use p:target
+<a> with download attr
 <input type=file accept="image/png, image/jpeg">
 <p contenteditable>This paragraph is editable; it is read-write.</p>
 svg image code to alter with css
+
+map > area, area /> <img //linking shape location url to image
 
 
 text

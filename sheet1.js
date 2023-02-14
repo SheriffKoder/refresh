@@ -71,6 +71,9 @@
     Obj.[name+ "extension"]
     Object.defineProperty(obj, key, value); //value can be an object
 
+    use . when accessing properties
+    use [] when accessing properties with a variable
+
 
     //use objects with special names
     // to contain other objects of methods and properties
@@ -858,6 +861,9 @@
     const x = [1, 2, 3, 4, 5];
     console.log(...x);  //outputs a string of 1,2,3,4,5
 
+
+    //calculating power
+    const binary = 2 ** 10;
 
 
 
