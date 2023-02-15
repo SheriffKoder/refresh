@@ -1,3 +1,5 @@
+//deeply understanding the process before writing code
+
 
 //Code in english
 //Code is self explanatory
@@ -514,7 +516,8 @@
     //click event runs on the context on what it was clicked in ex. body.onclick
     console.lo(e) //show all properties 
     e.type //type of event
-    
+    .nodeName //BUTTON , P etc.
+
     
     events, track of clicks, page scroll, touch quantity
     e.preventDefault();   //prevent default behavior, ex link not open but does another thing
@@ -526,7 +529,7 @@
     e.isTrusted // true if invoked by user (onclick) , false if with script (btn.click(); -- in IE all events are trusted except createEvent()
     e.key   //what is pressed on a keydown event ?
     e.location // for onkeydown/up key's group location on keyboard A/1:0, LCTRL:1, RCTRL:2, num:3
-
+    repeat  //whether a key is being hold down repeatedly or not
 
 
 
@@ -549,6 +552,8 @@
         //relative to the position of the last mousemove event
     offsetX/Y //horizontal/Vertical coordinate of the mouse pointer relative to the position of the edge of the target element
     pageX/Y   //horizontal/vertical coordinate of the mouse pointer at trigger time (relative to the document)
+
+    screenX/Y //(relative to screen) returns horizontal/vertical coords of mouse pointer
 
 
     let w = window.outerWidth; //rightaway
@@ -813,6 +818,8 @@
 
     .currentTarget, returns the element whose event listeners triggered the event
     .target, returns the element on which the event occured
+    event.relatedTarget //used on mouse/focus events, returns the related element
+
     e.data, returns the characters inserted with the event like on input
     .dataTransfer, returns the object containing the data being dragged/dropped or inserted/deleted
 
@@ -832,7 +839,8 @@
     .code, returns code of the key triggered the event
     .composed, returns whether the event is composed or not
     .ctrlKey, whether the CTRL key was pressed when the mouse event is triggered, mouse/keyboard/touch event
-    
+    shiftKey //whether the "shift" key was pressed when an event was triggered
+
     .defaultPrevented, pereventDefault was called for the event?
     e.eventphase //returns which phase of the event flow is currently being evaluated, NONE / CAPTURING_PHASE / AT_TARGET / BUBBLING_PHASE
 
@@ -846,6 +854,10 @@
 
     new/oldValue //returns the new/old value of the changed storage item
     newURL/oldURL //onclick[location.hash="part5"], onhashchange=[e.oldUrl, e.newURL]
+
+    state //Returns an object containing a copy of the history entries	
+    storageArea //Returns an object representing the affected storage object
+    
 
 
     /*////////////////////////////////////////////////////////////////////*/
@@ -866,6 +878,14 @@
     const binary = 2 ** 10;
 
 
+    Always use const or let to declare variables. 
+    Not doing so will result in polluting global variables.
+    group consts together and lets together
+    place them where you need them in lines of code ?
+
+    use num += 1; num -= 1; and avoid num++/--num at it caused unexpected behaviors
+
+    avoid line breaks after =
 
 
 

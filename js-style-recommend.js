@@ -328,6 +328,18 @@ class Rey extends Jedi {
 
 
 
+Always use const or let to declare variables. 
+Not doing so will result in polluting global variables.
+group consts together and lets together
+place them where you need them in lines of code ?
+
+use num += 1; num -= 1; and avoid num++/--num at it caused unexpected behaviors
+
+avoid line breaks after =
+
+
+
+
 
 
 
