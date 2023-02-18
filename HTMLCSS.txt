@@ -17,6 +17,18 @@ Body:
 <section> //standalone section of a document, put header
 <aside> //unrelated like ads
 
+<img> attributes
+fetchpriority : high/low/auto relative to other images
+isMap: server side map
+height/width: px
+loading: (how the browser should load the image relevant to Viewport)
+  eager(even if not within the visible viewport)
+  lazy(loaded when reaches a calculated distance from the viewport)
+referrerpolicy
+sizes
+usemap
+title: on mouse over will show info tooltip
+ 
 
 can access an id element by adding #id to page's url
 or just the id in the href
@@ -36,6 +48,12 @@ parent:target-within //Selects a parent when one of its descendants is a target
 svg image code to alter with css
 
 map > area, area /> <img //linking shape location url to image
+
+<audio> html element used to embed sound content
+using src or nested source/a tags
+
+<source> has src/type attrs
+used on picture, audio, video
 
 
 text
