@@ -720,5 +720,44 @@ pseudoElement //returns the name of the pseudo-element of the animation or trans
 
 
 
+event.relatedTarget //used on mouse/focus events, returns the related element
+event.Target // which element triggered the onclick event
+
+repeat  //whether a key is being hold down repeatedly or not
+
+screenX/Y //(relative to screen) returns horizontal/vertical coords of mouse pointer
+shiftKey //whether the "shift" key was pressed when an event was triggered
+state //Returns an object containing a copy of the history entries	
+storageArea //Returns an object representing the affected storage object
+
+.nodeName
+
+
+*/
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+e.targetTouches //returns an array of touch objects, one for each finger touching the current target element
+touches //list of all the touch objects currently in contact with the surface
+
+
+e.timeStamp //time in ms, from document loading finish till event created
+
+total //total amount of work that will be loaded
+
+transitionend //DivName.addEventListener("transitionend", myFunction);
+transition, transition-delay, transition-duration, transition-property, transition-timing-function
+
+
+
+
+
+
+
+
+
+
 
 */

@@ -502,6 +502,7 @@
 //    console.time('fetching data');
 //    console.timeEnd('fetching data'); //calc time taken for a function
 
+    e.timeStamp //time in ms, from document loading finish till event created
 
 
     
@@ -654,6 +655,9 @@
     .ontouchend	
     .touchcancel    //when touch is interrupted
 
+    e.targetTouches //returns an array of touch objects, one for each finger touching the current target element
+    e.touches //list of all the touch objects currently in contact with the surface
+
 
     e.touches.length
     let {pageX, pageY} = e.touches[i];
@@ -670,6 +674,10 @@
     e.propertyName //used on transitionend event, returns the first transition property used name
     pseudoElement //returns the name of the pseudo-element of the animation or transition
     
+    transitionend //DivName.addEventListener("transitionend", myFunction);
+    transition, transition-delay, transition-duration, transition-property, transition-timing-function
+    
+
 
     //hmtl Form/input-submit, 
     form on submit, e.preventDefault(); //avoid refreshing
@@ -858,6 +866,8 @@
     state //Returns an object containing a copy of the history entries	
     storageArea //Returns an object representing the affected storage object
     
+    total //total amount of work that will be loaded
+
 
 
     /*////////////////////////////////////////////////////////////////////*/

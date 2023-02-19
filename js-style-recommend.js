@@ -339,6 +339,13 @@ avoid line breaks after =
 
 
 
+function expressions //function named()
+when named //var Fnnamed = function named()
+Fnnamed host the name only not the function or its body
+but named() does
+
+
+
 
 
 
