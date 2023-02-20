@@ -43,6 +43,12 @@
     console.log(window.myNumber); //20, when sum is called the this's become global
 
 
+    //switch cases should have a {}
+    switch (foo) {
+        case 1: {
+          let x = 1;
+          break;
+      }
 
     /*////////////////////////////////////////////////////////////////////*/
     /*////////////////////////////////////////////////////////////////////*/
@@ -220,6 +226,8 @@
     
     let func = (arg1, arg2, ... ) = > expression;
     
+
+    //ternaries should not be nested and should be single line better
     //if age then use this function, else func is another function
     let func = (age > 18) ?
         () => alert('hello'):
@@ -898,7 +906,20 @@
     avoid line breaks after =
 
 
+    // good
+    if (collection.length > 0) {
+    // ...
+    }
 
+    // good
+    if (name !== '') {
+    // ...
+    }
+
+    // good
+    if (isValid) {
+    // ...
+    }
 
 
 

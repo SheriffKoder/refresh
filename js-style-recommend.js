@@ -345,10 +345,7 @@ Fnnamed host the name only not the function or its body
 but named() does
 
 
-
-
-
-
+use === and !== over -- and !=
 
 
 
