@@ -524,7 +524,7 @@
 
     //click event runs on the context on what it was clicked in ex. body.onclick
     console.lo(e) //show all properties 
-    e.type //type of event
+    e.type  //returns the event type, keydown keyup etc..
     .nodeName //BUTTON , P etc.
 
     
@@ -543,7 +543,9 @@
 
 
     //position and placing
-    x = target.clientX; .clientY; //px position map.onclick = fn();
+    e.view //returns a reference to the window object where the event occured, e.view.name
+
+    x = target.clientX; .clientY; //mouse pointer px position map.onclick = fn(); at the time of event
     - screenX users screen, pageX browsers screen
     //  pageX //mouseclick to draw
     e.offsetX/Y //position from the element itself
@@ -921,8 +923,16 @@
     // ...
     }
 
+    
+    // good
+    const foo = a || b;   //on a return a else b
+    const bar = !!c;    //true on true
+    const baz = !c;     //false on true
+    const quux = a ?? b;  //const quux = a != null ? a : b;
 
-
+    //same line else
+    } else {
+    }
 
 
 
