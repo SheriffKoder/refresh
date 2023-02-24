@@ -49,12 +49,40 @@ svg image code to alter with css
 
 map > area, area /> <img //linking shape location url to image
 
+
+//////////////////////////////////////
+
 <audio> html element used to embed sound content
 using src or nested source/a tags
+
+<video>
+autoplay (some browsers need mute attr for it to work)
+autopictureinpicture: true/false
+controls
+disablepictureinpicture
+disableremoteplayback
+controlslist: no download, nofullscreen, noremoteplayback
+crossorigin
+height/width: display area, absolute values
+loop, muted, playsinline
+poster: url for an image to be shown while video is downloading
+preload: none/metadata(lengthonly)/auto
 
 <source> has src/type attrs
 used on picture, audio, video
 
+
+<track> "captions"
+used as a child of the media elements audio/video
+time text tracks/data like subtitles
+video > track / <aSRC> / <aSUBT>
+default: to enable by default
+kind: subtitles/captions/descriptions/chapters/metadata
+label
+src: vtt file
+src lang
+
+//////////////////////////////////////
 
 text
 <q> short line quotation, adds quote marks, used with cite attr.

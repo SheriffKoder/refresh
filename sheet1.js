@@ -923,7 +923,7 @@
     // ...
     }
 
-    
+
     // good
     const foo = a || b;   //on a return a else b
     const bar = !!c;    //true on true
@@ -935,6 +935,24 @@
     }
 
 
+    // do not use un necessary else to return, may use if another nested if for the parent
+    function foo() {
+    if (x) {
+        return x;
+    }
+
+    return y;
+    }
+
+
+    // good
+    if (
+    (foo === 123 || bar === 'abc')
+    && doesItLookGoodWhenItBecomesThatLong()
+    && isThisReallyHappening()
+    ) {
+    thing1();
+    }
 
 
 
