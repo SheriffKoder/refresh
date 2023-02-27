@@ -257,6 +257,10 @@ https://openweathermap.org/current
 https://github.com/n0shake/Public-APIs#captcha
 https://github.com/public-apis/public-apis
 
+vatapi.com > country code lookup
+JSON file, rates object, fetch sendpoint
+
+
 keep API keys safe from github by using Figaro
 
 */
@@ -933,6 +937,228 @@ function printList(list) {
 }
 
 
+*/
 
 
+
+
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+Test Driven Development TDD
+
+writing automated tests for isolated units of the code 
+before writing complete code
+testing out different inputs for outputs
+allows to map and know what tests are needed to be tested first
+one at a time
+
+tools like: mocha, jasmine, Tape, "Jest" help in testing and provide automatic mocking
+goal: clean code that works
+benefit: less bugs, improved quality and design, thinking pace, 
+cons: tedious, slow down development
+
+> try making it work by it fail with a subset of the code
+> then continue building the code
+> then test the code
+> then make necessary changes to code if it fails and repeat
+
+test cases should be written
+. describe the feature that is being tested in plain english
+. provide the expected outcome of the test
+. compare that to the actual value
+
+two kinds of coverage:
+Code coverage: how much of the code is exercised, and
+Case coverage: how many of the use-cases are covered by the test suites
+
+//////////////////////////////////////
+Pure functions in testing
+
+Tightly coupled code is hard to test
+the tighter the coupling, the harder it is to maintain or extend 
+the application.
+
+but pure functions are immediately testable because
+
+the output only depends on passed input arguments
+will always return the same result with the same input
+does not use (observable) requests from network, i/o, date, 
+  math.random() , console/screen print, data etc.
+do not require mocking (fake tests)
+
+observable:
+any interaction with the outside world "from within the function"
+external variable change
+calling another method or outer scope variable
+
+
+Types of coupling: 
+control/state/state-shape dependencies, subclass/event/message coupling
+
+-------------------------
+tightly couples code problem solution
+1) remove dependencies
+for example instead of having an if statement that alerts a string
+put the if statement in another function that returns the string
+to this function based on inputs
+
+2) mocking: fake versions of a function that always behaves 
+exactly how you want, the more tight coupling the more mocking
+
+let the function do one thing
+isolate side-effects
+composition not class inheritance
+Module imports without side-effects
+Message passing/pubsub
+Immutable parameters
+
+-------------------------
+
+
+//code ex
+const someOrder = {
+  items: [
+    { name: "Dragon food",          price: 8,   quantity: 8 },
+    { name: "Dragon cage (small)",  price: 800, quantity: 2 },
+    { name: "shipping",             price: 40,  shipping: true}
+  ]
+}
+
+function orderTotal(order) {
+  return order.items.reduce((prev, cur) => cur.price + (cur.quantity || 1 ) + prev, 0);
+}
+
+if (orderTotal({
+  items: [
+    { name: "Dragon food",          price: 2,   quantity: 3 }
+  ]
+}) !==6) {
+  throw new Error("check fail: quantity");
+}
+
+
+
+////////////////////////////////////
+////////////////////////////////////
+//installing jest and testing with it
+
+also can use with babel or webpack by following the getting-started
+page on jestjs.io
+
+# npm init
+enter enter
+
+install jest
+# npm i --save-dev jest
+
+//change package.json>script>test to "jest"
+and add "watch": "jest --watch *.js" //for each time save test runs
+
+//////
+
+//create 
+order-total.js
+order-total-test.js
+
+//main file 
+put the function
+module.export = functionName;
+
+//test file
+const Name = require('./main-filename);
+put test cases inside "it.expect(Function).toBe(expected_value)" 
+
+//to test
+#npm test
+
+
+///////////////////////////////////////
+mock functions allow test links between code
+by erasing the actual function implementation
+either by mock functions or manual mock
+
+//ex// using mock in jest
+
+.mock property
+[users.js]
+import axios from 'axios';
+class Users {
+  static all() {
+    return axios.get('/users.json').then(resp => resp.data);
+  }
+}
+export default Users;
+
+users.test.js
+import axios from 'axios';
+import Users from './users';
+jest.mock('axios');
+test('should fetch users', () => {
+  const users = [{name: 'Bob'}];
+  const resp = {data: users};
+  axios.get.mockResolvedValue(resp);
+
+  // or you could use the following depending on your use case:
+  // axios.get.mockImplementation(() => Promise.resolve(resp))
+
+  return Users.all().then(data => expect(data).toEqual(users));
+});
+//////////
+
+
+////provide a name for mock functions
+will be displayed instead of jest.fn()
+mockName outputs an identifier in case of an error
+
+const myMockFn = jest
+  .fn()
+  .mockReturnValue('default')
+  .mockImplementation(scalar => 42 + scalar)
+  .mockName('add42');
+
+
+
+
+
+
+////exporting/importing
+export const foo = 'foo';
+export const bar = () => 'bar';
+export default () => 'baz';
+import defaultExport, {bar, foo} from '../foo-bar-baz';
+
+messages
+Query: return something / change nothing
+command: return nothing / change something
+
+
+
+
+
+
+
+//////////
+Notes:
+//////////////////////////////////////
+By default, the current version of Jest will not recognize 
+ES6 import statements. In order for you to be able 
+to use ES6 modules for this project you may do the following:
+
+Install the @babel/preset-env package
+npm i -D @babel/preset-env
+
+Create a .babelrc file in the project’s root with the following lines of code:
+{ "presets": ["@babel/preset-env"] }
+
+
+Jest BeforeAll,afterAll, beforeEach, afterEach ?
+
+-check the file and put it's location here
 */
