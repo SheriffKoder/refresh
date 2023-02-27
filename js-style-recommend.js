@@ -348,6 +348,43 @@ but named() does
 use === and !== over -- and !=
 
 
+// good
+const foo = a || b;   //on a return a else b
+const bar = !!c;    //true on true
+const baz = !c;     //false on true
+const quux = a ?? b;  //const quux = a != null ? a : b;
+
+//same line else
+} else {
+}
+
+
+// do not use un necessary else to return, may use if another nested if for the parent
+function foo() {
+  if (x) {
+    return x;
+  }
+
+  return y;
+}
+
+
+// good
+if (
+  (foo === 123 || bar === 'abc')
+  && doesItLookGoodWhenItBecomesThatLong()
+  && isThisReallyHappening()
+) {
+  thing1();
+}
+
+
+
+
+
+
+
+
 
 /*
 

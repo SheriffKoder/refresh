@@ -179,6 +179,20 @@ revision
         CallBacks (summarized)
         Promise with examples (summarized)
 
+Async Promises: Requesting API data (s)
+upload data to server using fetch (s)
+Async/Await to cause sync code, on API fetches (s)
+Understanding algorithms, datastructures (s)
+
+	.binary search algorithm (s)
+	.stacks/queues datastaructure (s)
+	.binary tree breath/depth-first algorithms (s)
+Recursive functions (s)
+Linked Lists (s)
+Testing with Jest (s)
+	.pure functions and tight coupling reduce (s)
+	.mocking test using jest
+
 
 **********************************************************************
 *****************************filename.js******************************
