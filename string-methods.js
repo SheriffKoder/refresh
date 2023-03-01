@@ -752,6 +752,16 @@ transition, transition-delay, transition-duration, transition-property, transiti
 
 
 
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+//video events
+
+.canplay //fired when user can play but could stop to buffer still unloaded media
+.canplaythrough //can play media up to its end without stopping
+.complete //fried when the rendering of an OfflineAudioContext is complete
+.durationchange //when duration attribute has been updated
+.emptied //when media has been fully/partially loaded and load() called to reload it again
 
 
 
