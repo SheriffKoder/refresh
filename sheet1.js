@@ -5,6 +5,20 @@
 //Code is self explanatory
 //put all lets in one object
 
+
+//multi line comments
+/**
+ * make() returns a new element
+ * based on the passed-in tag name
+ */
+
+//single line comments should start with space and 
+//be on a new line with empty line before it if in middle of code
+
+//use FIXME: -- need to figure this out || TODO: -- need to implement
+//use 2 spaces only if tabbing
+
+
 /*////////////////////////////////////////////////////////////////////*/
 //////// RegEx
 {
