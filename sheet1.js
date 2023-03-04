@@ -969,5 +969,19 @@
     }
 
 
+    //space after if, between calculations
+    //no space after .log("");
+    //end files with a single newline
+
+    // for long method chains
+    $('#items')
+    .find('.selected')
+        .highlight()
+        . ...
+        . ...();
+
+
+
+
 
     */
