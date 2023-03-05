@@ -397,6 +397,11 @@ if (
 //space after if, between calculations
 //no space after .log("");
 //end files with a single newline
+//leave a newline between blocks and following statements 
+//but leave the first line in the block un padded
+//do not use multiple padding in your code
+//no spaces inside (), or [] but add within {}
+
 
 // for long method chains
 $('#items')

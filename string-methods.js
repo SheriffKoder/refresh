@@ -762,6 +762,15 @@ transition, transition-delay, transition-duration, transition-property, transiti
 .complete //fried when the rendering of an OfflineAudioContext is complete
 .durationchange //when duration attribute has been updated
 .emptied //when media has been fully/partially loaded and load() called to reload it again
+.ended //playback has stopped because the end of the media was reached
+.error //fetching error or type is not supported
+.loadeddata //first frame of the media has finished loading
+.loadedmetadata //metadata has been loaded
+.pause . play //playback has been paused/begun
+.playing //playback is ready to start after having been paused or delayed due lack of data
+.progress //fired periodically as the browser loads a resource
+.ratechange //the playback rate has changed
+.seeked .seeking //a seek operation completed/began
 
 
 
