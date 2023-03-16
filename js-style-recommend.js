@@ -394,11 +394,11 @@ if (
 //use 2 spaces only if tabbing
 
 
-//space after if, between calculations
-//no space after .log("");
-//end files with a single newline
+//space after if, between calculations/operators
+//no space after .log("");, in between functioncallhere()
+//end files/blocks with a single newline
 //leave a newline between blocks and following statements 
-//but leave the first line in the block un padded
+//but leave the first line in the block un padded and not pad in between
 //do not use multiple padding in your code
 //no spaces inside (), or [] but add within {}
 

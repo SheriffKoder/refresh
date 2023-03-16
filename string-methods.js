@@ -756,7 +756,6 @@ transition, transition-delay, transition-duration, transition-property, transiti
 /*
 
 //video events
-
 .canplay //fired when user can play but could stop to buffer still unloaded media
 .canplaythrough //can play media up to its end without stopping
 .complete //fried when the rendering of an OfflineAudioContext is complete
@@ -771,6 +770,11 @@ transition, transition-delay, transition-duration, transition-property, transiti
 .progress //fired periodically as the browser loads a resource
 .ratechange //the playback rate has changed
 .seeked .seeking //a seek operation completed/began
+.stalled //user trying to fetch but data is unexpectedly not forthcoming
+.suspend //media data loading has been suspended
+.timeupdate //time indicated by the currentTime attribute has been updated
+.volumechange //the volume has changed
+.waiting //playback has stopped due to temp lack of data
 
 
 
