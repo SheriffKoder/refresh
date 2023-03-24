@@ -9,6 +9,13 @@
 //and evaluate to JS objects
 
 
+//component names start with a capital letter
+//DOM tags start with lower case 
+
+//App in App.js is the root component
+//can only return one element/wrapper but it can have other nested elements
+
+
 
 //index.html contains one div with your divs/root elements nested inside it
 // as React uses camelCase property naming
@@ -151,7 +158,7 @@ const App_1B = (props) => {
 
 const element_1B = <App_1B name="Sara" />;
 ReactDOM.render {
-    element,
+    element_1B,
     document.getElementById('root_1B')
 }
 
@@ -196,6 +203,166 @@ ReactDOM.render(<Component2 />, myDiv2);
 ////////////////////////////////////////////////////////////
 /*
 
+//if part of UI is complex or used several times
+//try to extract from it into separate components
+
+//Rule: All React components must act like pure functions 
+//with respect to their props.
+
+//Pure
+function sum(a, b) {
+  return a + b;
+}
+
+//not Pure
+function withdraw(account, amount) {
+  account.total -= amount;
+}
+
+
+
+
+// React is a library for creating user interfaces
+// builds single components or widgets
+// angular 2 supports building whole single page applications
+
+
+
+//header.js
+import React from "react";
+export Class Header extends React.Component {
+    render () {
+        return (
+            <nav className="navbar navbar-default">
+                <div className="container">
+                    <div className="navbar-header">
+                        <div className="nav navbar-nav">
+                            <li><a href="#"> Home</a></li>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        )
+    }
+}
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+
+//react library has nothing to do with the browser
+//so we use react-dom (was included before)
+
+//setting up React environment without create-new-react-app
+//install npm, react libs, webpack, babel
+
+
+# npm init
+# npm i react react-dom
+
+//webpack is what allows react to share modules together
+//and webpack dev server for having a local host
+
+# npm i --save-dev webpack webpack-dev-server webpack-cli
+
+
+//transpile ES6 code into browser friendly code
+//babel preset react and babel preset env
+//also a loader to compile jsx
+//html webpack plugin
+
+# npm i --save-dev babel-core babel-loader babel-preset-env babel-preset-react html-webpack-plugin
+
+>>create webpack.config.js
+
+
+////// webpack.config.js
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+
+//__dirname (current directory), ./dist (directory for bundle file) and its name
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: path.join(__dirname, './dist'),
+        filename: 'index_bundle.js'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        })
+    ]
+
+}
+
+/////////////////////
+
+>> create ./.babelrc
+
+{
+    "presets": ["env", "react"]
+}
+
+
+
+
+/////////////////////
+//package.json
+
+>> scrips > replace test
+with 
+"start" : webpack-dev-server --mode development --open --hot",
+"build" : "webpack --mode production"
+
+
+
+>> create src/index.html, index.js
+//this is the place for anything related to react application
+
+//import and write code normally
+
+//npm start
+
+
+//this is a file to use react without un-necessary stuff
+//with hot reload
+
+ctrl c to stop
+npm run build //will create the bundle file in dist folder
+
+https://www.youtube.com/watch?v=deyxI-6C2u4
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
 add more components
 in src/components/folder and import into App.js
 
@@ -228,7 +395,7 @@ export default class extends Component {...}
 //can put any javascript code inside curly brackets
 //for example 2+2, user.firstName, formatName(user) etc.
 
-**
+
 // jsx lines can be used as variables
 // use inside if/for, argument, return it from functions
 
