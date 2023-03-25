@@ -12,6 +12,13 @@
 //component names start with a capital letter
 //DOM tags start with lower case 
 
+//////Handling events
+//<button onclick="activateLasers()">  //Html
+//<button onClick={activateLasers}> //JSX, //camelCase, {functionName}
+//Activate Lasers
+//</button>
+
+
 //App in App.js is the root component
 //can only return one element/wrapper but it can have other nested elements
 
@@ -90,113 +97,7 @@
 //in render, {props.state}
 
 
-////////////////////////////////////////////////////////////
-////component1
-import React, { Component, useState, setState } from 'react';
-import ReactDOM from 'react-dom'; //all component
-//import Hello from './app/Hello.jsx'; //in main component
-
-//comments in react
-{
-    /* comment here * /
-}
-
-
-class App_1A extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            name: props.name
-        }
-    }
-    **
-    this.setState({name: 'Hello'}); // Do this, not direct call
-
-
-    render() {
-        return (
-            <div className="App_1A">
-                <h1> Hello World 1A {props.name} </h1>
-                
-                <button onClick={() => this.setState({ count: this.state.count + 1 })}>
-                    Click me
-                </button>
-
-            </div>
-        )
-    }
-
-}
-
-
-ReactDOM.render(
-  App_1A,
-  document.getElementById('root_1A')
-);
-
-
-////component using function syntax; function/arrow/direct_arrow_noreturn
-const App_1B = (props) => {
-    const [timeOfDay, setTimeOfDay] = useState('morning');
-    const [count, setCount] = useState(0);
-    
-    return {
-        <div> 
-            <h1> Hello World 1B {props.name} {props.timeOfDay} </h1> 
-            <p> You clicked {count} times </p>
-            
-            <button className={props.objectInput.class} 
-                    onClick={() => setCount(count+1)}> 
-                Click me
-            </button>
-        
-        </div>;
-        
-    }
-
-
-
-const element_1B = <App_1B name="Sara" />;
-ReactDOM.render {
-    element_1B,
-    document.getElementById('root_1B')
-}
-
-
-export default App_1A; //default no brackets
-export { App_1B };
-//export { ComponentA, ComponentB, ComponentC }; // multiple
-
-
-
-////////////////////////////////////////////////////////////
-////main.js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App_1A from './app/Component1.jsx';
-
-
-let myDiv1 = document.getElementById('rootDiv1);
-ReactDOM.render(<App_1A />, myDiv1);
-
-
-
-class Component2 extends React.Component {
-    render() {
-        return {
-        <div className="App">
-            <h1> Hello World 2</h1>
-        </div>
-
-        }
-    }
-}
-
-let myDiv2 = document.getElementById('rootDiv2);
-ReactDOM.render(<Component2 />, myDiv2);
-
-
-
+//check react_app_1 files for code
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -205,6 +106,12 @@ ReactDOM.render(<Component2 />, myDiv2);
 
 //if part of UI is complex or used several times
 //try to extract from it into separate components
+
+//a component should ideally only do one thing. single responsibility
+//If it ends up growing, it should be decomposed into smaller subcomponents.
+
+//state is reserved only for interactivity not for static versions
+
 
 //Rule: All React components must act like pure functions 
 //with respect to their props.
@@ -247,111 +154,37 @@ export Class Header extends React.Component {
 }
 
 
-/*////////////////////////////////////////////////////////////////////*/
-/*////////////////////////////////////////////////////////////////////*/
-/*////////////////////////////////////////////////////////////////////*/
-/*
-
-
-//react library has nothing to do with the browser
-//so we use react-dom (was included before)
-
-//setting up React environment without create-new-react-app
-//install npm, react libs, webpack, babel
-
-
-# npm init
-# npm i react react-dom
-
-//webpack is what allows react to share modules together
-//and webpack dev server for having a local host
-
-# npm i --save-dev webpack webpack-dev-server webpack-cli
-
-
-//transpile ES6 code into browser friendly code
-//babel preset react and babel preset env
-//also a loader to compile jsx
-//html webpack plugin
-
-# npm i --save-dev babel-core babel-loader babel-preset-env babel-preset-react html-webpack-plugin
-
->>create webpack.config.js
-
-
-////// webpack.config.js
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-
-
-//__dirname (current directory), ./dist (directory for bundle file) and its name
-module.exports = {
-    entry: './src/index.js',
-    output: {
-        path: path.join(__dirname, './dist'),
-        filename: 'index_bundle.js'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
-            }
-        ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html'
-        })
-    ]
-
-}
-
-/////////////////////
-
->> create ./.babelrc
-
-{
-    "presets": ["env", "react"]
-}
-
-
-
-
-/////////////////////
-//package.json
-
->> scrips > replace test
-with 
-"start" : webpack-dev-server --mode development --open --hot",
-"build" : "webpack --mode production"
-
-
-
->> create src/index.html, index.js
-//this is the place for anything related to react application
-
-//import and write code normally
-
-//npm start
-
-
-//this is a file to use react without un-necessary stuff
-//with hot reload
-
-ctrl c to stop
-npm run build //will create the bundle file in dist folder
-
-https://www.youtube.com/watch?v=deyxI-6C2u4
-
 
 
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 /*
+
+//React supported events
+https://reactjs.org/docs/events.html
+
+
+//after class can set the default values for states if undefined
+CustomButton.defaultProps = {
+  color: 'blue'
+};
+//but if want a null, give value = {null} in the return
+
+**
+//need to set the state based on a previous state ?
+//using componentDidUpdate() or a setState callback
+(setState(updated, callback)) either of which are
+guaranteed to fire after the update has been applied
+
+//unless shouldComponentUpdate() returns false
+//setState() will always lead to re-render
+
+this.setState((state, props) => {
+  return {counter: state.counter + props.step};
+});
+//props is an optional callback
+
+
 
 
 
@@ -402,7 +235,251 @@ export default class extends Component {...}
 
 
 
+/*////////////////////////////////////////////////////////////////////*/
+/*
 
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
+
+// Wrong
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+
+// Correct
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+
+
+
+////lifecycle methods
+//Mounting
+//set up a timer whenever the clock is rendered to the DOM for the first time
+//When the Clock output is inserted in the DOM, React calls the componentDidMount() lifecycle method.
+
+
+//unmounting
+//clear that timer, whenever the dom produced by the clock is removed
+//If the Clock component is ever removed from the DOM, 
+//React calls the componentWillUnmount() lifecycle method 
+//so the timer is stopped.
+
+
+special methods in the class for each
+  componentDidMount() {
+  componentWillUnmount() {
+
+
+
+
+//returning/passing state to the next component
+//makes it not visible if its a state, props to the next component
+
+//The ‘this.props’ is a kind of global object which stores all 
+of a components props.
+
+
+//preventing default behavior in JSX
+function Form() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('You clicked submit.');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+
+
+//if used onClick={this.handleClick}, you should bind that method.
+//or used arrow function in the calling line,
+//but a different callback is created each time the class renders
+<button onClick={() => this.handleClick()}>
+//or define the function 
+  handleClick = () => { };
+
+
+//passing arguments
+<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+//e is passed automatically in the bind
+
+
+//////conditional rendering cont...
+function LoginButton(props) {
+  return (
+    <button onClick={props.onClick}>
+      Login
+    </button>
+  );
+}
+
+function LogoutButton(props) {
+  return (
+    <button onClick={props.onClick}>
+      Logout
+    </button>
+  );
+}
+
+class LoginControl extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.state = {isLoggedIn: false};
+  }
+
+  handleLoginClick() {
+    this.setState({isLoggedIn: true});
+  }
+
+  handleLogoutClick() {
+    this.setState({isLoggedIn: false});
+  }
+
+  render() {
+    const isLoggedIn = this.state.isLoggedIn;
+    let button;
+    if (isLoggedIn) {
+      button = <LogoutButton onClick={this.handleLogoutClick} />;
+    } else {
+      button = <LoginButton onClick={this.handleLoginClick} />;
+    }
+
+    return (
+      <div>
+        <Greeting isLoggedIn={isLoggedIn} />
+        {button}
+      </div>
+    );
+  }
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<LoginControl />);
+
+
+
+//////inline if with logical && operator
+//note: falsy conditions will have the expression be returned
+//It works because in JavaScript, true && expression always evaluates 
+//to expression, and false && expression always evaluates to false.
+
+function Mailbox(props) {
+  const unreadMessages = props.unreadMessages;
+  return (
+    <div>
+      <h1>Hello!</h1>
+      {unreadMessages.length > 0 &&
+        <h2>
+          You have {unreadMessages.length} unread messages.
+        </h2>
+      }
+    </div>
+  );
+}
+
+const messages = ['React', 'Re: React', 'Re:Re: React'];
+
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Mailbox unreadMessages={messages} />);
+
+
+
+//another example
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      {isLoggedIn
+        ? <LogoutButton onClick={this.handleLogoutClick} />
+        : <LoginButton onClick={this.handleLoginClick} />
+      }
+    </div>
+  );
+}
+
+
+
+//////use return null to hide a component
+function WarningBanner(props) {
+  if (!props.warn) {
+    return null;
+  }
+
+  return (
+    <div className="warning">
+      Warning!
+    </div>
+  );
+}
+
+class Page extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {showWarning: true};
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+  }
+
+  handleToggleClick() {
+    this.setState(state => ({
+      showWarning: !state.showWarning
+    }));
+  }
+
+  render() {
+    return (
+      <div>
+        <WarningBanner warn={this.state.showWarning} />
+        <button onClick={this.handleToggleClick}>
+          {this.state.showWarning ? 'Hide' : 'Show'}
+        </button>
+      </div>
+    );
+  }
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Page />);
 
 
 
