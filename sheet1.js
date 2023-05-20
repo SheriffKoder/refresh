@@ -46,23 +46,28 @@
 
     undefined;
     function sum() {
-        //"use strict";   //makes this un-global for the below lines even in inner scopes except for arrow functions
+        //"use strict";     //makes this un-global for the below lines even in inner scopes 
+                            //except for arrow functions
         this.myNumber = 20; // add 'myNumber' property to global object
 
     }
     // sum() is invoked as a function
     // this in sum() is a global object (window)
-    console.log(window.myNumber); //undefined
+    console.log(window.myNumber); //undefined //function not yet invoked
     sum();     // => 31
     console.log(window.myNumber); //20, when sum is called the this's become global
 
 
     //switch cases should have a {}
+    let foo=1; let x;
     switch (foo) {
         case 1: {
-          let x = 1;
+            x = 1;
           break;
-      }
+        }
+        default: {
+            x=2;
+        }
 
     /*////////////////////////////////////////////////////////////////////*/
     /*////////////////////////////////////////////////////////////////////*/
@@ -80,18 +85,39 @@
         
         key2: { },  //can be an object holding anything, fn/obj/arr
         
-        functionName: function (myConfig) {
-            this.myConfig = myConfig
+        key3functionName: function (myConfig1) {
+            this.myConfig2 = myConfig1; //added to object
+            console.log(this.myConfig2);
         }
 
     };
 
     //access data
     Object1.key3 = 3;           //add on fly or access property
-    person[myDataName] = myDataValue;
-    Obj.["two letter"]
+    person[myDataName] = myDataValue;   //add on fly
+    Obj["two wordkey"]
     Obj.[name+ "extension"]
-    Object.defineProperty(obj, key, value); //value can be an object
+    
+    Object.defineProperty(newObject2, 'property1', {
+        value: 42,
+        writable: false
+      });
+    console.log(newObject2.property1);
+    
+    //update property with assign
+    const obj1 = { foo: "bar", x: 42 };
+    Object.assign(obj1, { x: 1337 });
+    console.log(obj1); // { foo: "bar", x: 1337 }
+
+    //merging objects separate
+    const merge = (...objects) => ({ ...objects });
+    const mergedObj2 = merge({}, obj1, obj2);
+
+    //merging objects combined
+    const merge = (...objects) =>
+        objects.reduce((acc, cur) => ({ ...acc, ...cur }));
+    const mergedObj1 = merge(obj1, obj2);
+    // { foo: 'baz', x: 42, y: 13 }
 
     use . when accessing properties
     use [] when accessing properties with a variable
@@ -104,9 +130,55 @@
     ////////////////////////////////////////////////////////////////////////
     //Copy or convert an object to an array
     //but not use when adding methods inline to it
-    const objectname = [...foo]; 
+    const objectname = [...foo]; //does not work on non iterable objects
+
+    //copy an object(not reference) in another object
+    const objectname = {...newObject2}; 
+    console.log(objectname);
+    const mergedObj = { ...obj1, ...obj2 };
+
     
-    let x = object.toString();
+    //spread in functions
+    function myFunction(x, y, z) {}
+    const args = [0, 1, 2];
+    myFunction(...args);
+    myFunction(-1, ...args, 2, ...[3]);
+
+
+    //spread to copy an array to another array format
+    //does not do multi dimentional deep clone copy, API structuredClone() does
+    const arrayName = [...foo]; // like arrayName.slice()
+    const parts = ["shoulders", "knees"];
+    const lyrics = ["head", ...parts, "and", "toes"];
+    arr1 = [...arr1, ...arr2];  //concatenate
+    arr1 = [...arr2, ...arr1];  //put beginning of array
+
+
+
+
+
+    //toString()
+    function newObject3(name, age) {
+        this.name = name;
+        this.age = age
+    }
+    let x = newObject3.toString();  //returns [object Type] where type here is Object
+    //but toString can be defined to output wanted string value
+    newObject3.prototype.toString = function objectToString () {
+        return `my name is ${this.name} my age is ${this.age}`;
+    }
+    let newObject3Copy = new newObject3("myName", "myAge");
+    console.log(newObject3Copy.toString());
+
+    
+
+    //convert an object or array to JSON and switch back
+    let stringObject = JSON.stringify(newObject2);
+    console.log(stringObject);
+
+    let retrievedObject = JSON.parse(stringObject);
+    console.log(retrievedObject);
+
 
     //JS Object has a prototype containing all methods
     //Literal/constructor object prototype methods
@@ -114,15 +186,18 @@
     .constructor, .hasOWnProperty(), .isPropertyOf(), .propertyIsEnumerable(), 
     .toLocaleString(), .toString(),  .valueOf().
 
-
+    let x = newObject2.hasOwnProperty("keyName");
+    console.log(x);
 
 
 
     ///////////////////////////////////////////////////////////////////
     // Object.keys only returns own keys/property names
+    //constructorName is the Object in question
     console.log(Object.keys(constrcutorName));   
-    // constrcutorName's properties
+    //constrcutorName's properties/all keys in an array
 
+    //constrcutorName's properties/all keys output separately
     //transfer structured data
     // for/in loops over both own and inherited keys, so use hasOwnProperty 
     //to filter for its properties
@@ -153,7 +228,13 @@
     //any function will have this prototype property now
     function.prototype.mybind = function () {};
 
-      
+    //define a custom method to a function constructor prototype
+    //to be used in new instances
+    newObject3.prototype.play = function () {
+        console.log( `${this.name} + ${this.age}`);
+    }
+    let newObject3Copy2 = new newObject3("nameX", "ageX");
+    newObject3Copy2.play();
 
 
 
